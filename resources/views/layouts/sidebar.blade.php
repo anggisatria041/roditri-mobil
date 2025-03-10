@@ -1,0 +1,90 @@
+<div class="aside-menu flex-column-fluid">
+    <div class="hover-scroll-overlay-y" id="kt_aside_menu_wrapper" data-kt-scroll="true"
+        data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto"
+        data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer" data-kt-scroll-wrappers="#kt_aside_menu"
+        data-kt-scroll-offset="0">
+        <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
+            id="#kt_aside_menu" data-kt-menu="true">
+            <div class="menu-item pt-5">
+                <div class="menu-content">
+                    <span class="menu-heading fw-bold text-uppercase fs-7">Dashboard</span>
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link {{ request()->routeIs('dashboard.index') ? 'active' : '' }}"
+                        href="{{ route('dashboard.index') }}">
+                        <span class="menu-icon">
+                            <i class="ki-outline ki-element-11 fs-2"></i>
+                        </span>
+                        <span class="menu-title">Dashboard</span>
+                    </a>
+                </div>
+            </div>
+            <div class="menu-item pt-5">
+                <div class="menu-content">
+                    <span class="menu-heading fw-bold text-uppercase fs-7">Menu</span>
+                </div>
+            </div>
+            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                <span class="menu-link">
+                    <span class="menu-icon">
+                        <i class="ki-outline ki-address-book fs-2"></i>
+                    </span>
+                    <span class="menu-title">Menu Dropdown</span>
+                    <span class="menu-arrow"></span>
+                </span>
+                <div class="menu-sub menu-sub-accordion">
+                    <div class="menu-item">
+                        <a class="menu-link" href="">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Sub 1</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a class="menu-link" href="">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Sub 2</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <a class="menu-link" href="">
+                    <span class="menu-icon">
+                        <i class="ki-outline ki-calendar-8 fs-2"></i>
+                    </span>
+                    <span class="menu-title">Menu</span>
+                </a>
+            </div>
+            <div class="menu-item pt-5">
+                <div class="menu-content">
+                    <span class="menu-heading fw-bold text-uppercase fs-7">Pengaturan</span>
+                </div>
+            </div>
+            <div data-kt-menu-trigger="click"
+                class="menu-item menu-accordion {{ request()->routeIs('user.index') ? 'show' : '' }}">
+                <span class="menu-link">
+                    <span class="menu-icon">
+                        <i class="ki-outline ki-address-book fs-2"></i>
+                    </span>
+                    <span class="menu-title">Pengaturan User</span>
+                    <span class="menu-arrow"></span>
+                </span>
+                <div class="menu-sub menu-sub-accordion">
+                    <div class="menu-item">
+                        <a class="menu-link {{ request()->routeIs('user.index') ? 'active' : '' }}"
+                            href="{{ route('user.index') }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">User</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
