@@ -96,4 +96,19 @@ class AuthController extends Controller
         }
         return view('page.home.index');
     }
+
+    public function mobil()
+    {
+        return view('page.mobil.index');
+    }
+
+    public function detailMobil()
+    {
+        return view('page.mobil.detailMobil');
+    }
+
+    public function kontak()
+    {
+        return view('page.kontak.index');
+    }
 }
