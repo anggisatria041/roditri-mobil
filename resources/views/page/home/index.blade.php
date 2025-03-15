@@ -82,23 +82,18 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="single-product">
-                            <img class="img-fluid" src="{{ asset('themes/img/product/p1.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('themes/img/product/mobil-1.png') }}" alt="">
                             <div class="product-details">
-                                <h6>addidas New Hammer sole
-                                    for Sports person</h6>
+                                <h6>Toyota Avanza 2022</h6>
                                 <div class="price">
-                                    <h6>$150.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
+                                    <h6>Rp 150.000.000</h6>
+                                    <h6 class="l-through">Rp 210.000.000</h6>
                                 </div>
                                 <div class="prd-bottom">
 
                                     <a href="" class="social-info">
                                         <span class="ti-bag"></span>
-                                        <p class="hover-text">add to bag</p>
-                                    </a>
-                                    <a href="" class="social-info">
-                                        <span class="lnr lnr-heart"></span>
-                                        <p class="hover-text">Wishlist</p>
+                                        <p class="hover-text">Checkout</p>
                                     </a>
                                     <a href="{{ route('detailMobil') }}" class="social-info">
                                         <span class="lnr lnr-move"></span>
@@ -110,23 +105,18 @@
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="single-product">
-                            <img class="img-fluid" src="{{ asset('themes/img/product/p2.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('themes/img/product/mobil-1.png') }}" alt="">
                             <div class="product-details">
-                                <h6>addidas New Hammer sole
-                                    for Sports person</h6>
+                                <h6>Toyota Avanza 2022</h6>
                                 <div class="price">
-                                    <h6>$150.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
+                                    <h6>Rp 150.000.000</h6>
+                                    <h6 class="l-through">Rp 210.000.000</h6>
                                 </div>
                                 <div class="prd-bottom">
 
                                     <a href="" class="social-info">
                                         <span class="ti-bag"></span>
-                                        <p class="hover-text">add to bag</p>
-                                    </a>
-                                    <a href="" class="social-info">
-                                        <span class="lnr lnr-heart"></span>
-                                        <p class="hover-text">Wishlist</p>
+                                        <p class="hover-text">Checkout</p>
                                     </a>
                                     <a href="{{ route('detailMobil') }}" class="social-info">
                                         <span class="lnr lnr-move"></span>
@@ -138,22 +128,17 @@
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="single-product">
-                            <img class="img-fluid" src="{{ asset('themes/img/product/p3.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('themes/img/product/mobil-1.png') }}" alt="">
                             <div class="product-details">
-                                <h6>addidas New Hammer sole
-                                    for Sports person</h6>
+                                <h6>Toyota Avanza 2022</h6>
                                 <div class="price">
-                                    <h6>$150.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
+                                    <h6>Rp 150.000.000</h6>
+                                    <h6 class="l-through">Rp 210.000.000</h6>
                                 </div>
                                 <div class="prd-bottom">
                                     <a href="" class="social-info">
                                         <span class="ti-bag"></span>
-                                        <p class="hover-text">add to bag</p>
-                                    </a>
-                                    <a href="" class="social-info">
-                                        <span class="lnr lnr-heart"></span>
-                                        <p class="hover-text">Wishlist</p>
+                                        <p class="hover-text">Checkout</p>
                                     </a>
                                     <a href="{{ route('detailMobil') }}" class="social-info">
                                         <span class="lnr lnr-move"></span>
@@ -165,23 +150,18 @@
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="single-product">
-                            <img class="img-fluid" src="{{ asset('themes/img/product/p4.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('themes/img/product/mobil-1.png') }}" alt="">
                             <div class="product-details">
-                                <h6>addidas New Hammer sole
-                                    for Sports person</h6>
+                                <h6>Toyota Avanza 2022</h6>
                                 <div class="price">
-                                    <h6>$150.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
+                                    <h6>Rp 150.000.000</h6>
+                                    <h6 class="l-through">Rp 210.000.000</h6>
                                 </div>
                                 <div class="prd-bottom">
 
                                     <a href="" class="social-info">
                                         <span class="ti-bag"></span>
-                                        <p class="hover-text">add to bag</p>
-                                    </a>
-                                    <a href="" class="social-info">
-                                        <span class="lnr lnr-heart"></span>
-                                        <p class="hover-text">Wishlist</p>
+                                        <p class="hover-text">Checkout</p>
                                     </a>
                                     <a href="{{ route('detailMobil') }}" class="social-info">
                                         <span class="lnr lnr-move"></span>

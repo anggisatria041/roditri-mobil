@@ -8,6 +8,8 @@ use App\Http\Controllers\AuthController;
 Route::get('/', [AuthController::class, 'home'])->name('home');
 Route::get('/mobil', [AuthController::class, 'mobil'])->name('mobil');
 Route::get('/detailMobil', [AuthController::class, 'detailMobil'])->name('detailMobil');
+Route::get('/pesanan', [AuthController::class, 'pesanan'])->name('pesanan');
+Route::get('/tentang', [AuthController::class, 'tentang'])->name('tentang');
 Route::get('/kontak', [AuthController::class, 'kontak'])->name('kontak');
 
 Route::middleware(['custom-auth'])->group(

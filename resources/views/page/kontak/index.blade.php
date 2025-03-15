@@ -25,12 +25,12 @@
                     <div class="contact_info">
                         <div class="info_item">
                             <i class="lnr lnr-home"></i>
-                            <h6>California, United States</h6>
-                            <p>Santa monica bullevard</p>
+                            <h6>Jalan Arifin Ahmad Sidomulyo Tim., Kec. Marpoyan Damai Kota Pekanbaru, Riau</h6>
+                            <p></p>
                         </div>
                         <div class="info_item">
                             <i class="lnr lnr-phone-handset"></i>
-                            <h6><a href="#">+62 812-9122-6588</a></h6>
+                            <h6><a href="#">+62 813-8343-5007</a></h6>
                             <p>Mon to Fri 9am to 6 pm</p>
                         </div>
                         <div class="info_item">

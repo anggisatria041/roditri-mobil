@@ -111,4 +111,14 @@ class AuthController extends Controller
     {
         return view('page.kontak.index');
     }
+
+    public function pesanan()
+    {
+        return view('page.pesanan.index');
+    }
+
+    public function tentang()
+    {
+        return view('page.tentang.index');
+    }
 }
