@@ -52,11 +52,12 @@
                 </div>
             </div>
             <div class="menu-item">
-                <a class="menu-link" href="">
+                <a class="menu-link {{ request()->routeIs('fitur.index') ? 'active' : '' }}"
+                    href="{{ route('fitur.index') }}">
                     <span class="menu-icon">
                         <i class="ki-outline ki-calendar-8 fs-2"></i>
                     </span>
-                    <span class="menu-title">Menu</span>
+                    <span class="menu-title">Fitur</span>
                 </a>
             </div>
             <div class="menu-item pt-5">

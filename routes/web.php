@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FiturController;
 
 Route::get('/', [AuthController::class, 'home'])->name('home');
 Route::get('/mobil', [AuthController::class, 'mobil'])->name('mobil');
@@ -26,6 +27,15 @@ Route::middleware(['custom-auth'])->group(
             Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
             Route::post('/update', [UserController::class, 'update'])->name('user.update');
             Route::delete('/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+        });
+
+        // User
+        Route::prefix('fitur')->group(function () {
+            Route::get('/', [FiturController::class, 'index'])->name('fitur.index');
+            Route::post('/store', [FiturController::class, 'store'])->name('fitur.store');
+            Route::get('/edit/{id}', [FiturController::class, 'edit'])->name('fitur.edit');
+            Route::post('/update', [FiturController::class, 'update'])->name('fitur.update');
+            Route::delete('/{id}', [FiturController::class, 'destroy'])->name('fitur.destroy');
         });
 
         // Logout

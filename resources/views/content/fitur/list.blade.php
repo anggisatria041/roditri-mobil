@@ -4,11 +4,11 @@
         <div data-kt-swapper="true" data-kt-swapper-mode="prepend"
             data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
             class="page-title d-flex align-items-center me-3 flex-wrap lh-1">
-            <h1 class="d-flex align-items-center text-gray-900 fw-bold my-1 fs-3">Pengaturan</h1>
+            <h1 class="d-flex align-items-center text-gray-900 fw-bold my-1 fs-3">Fitur Produk</h1>
             <span class="h-20px border-gray-200 border-start mx-4"></span>
             <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-1">
                 <li class="breadcrumb-item text-muted">
-                    <a href="" class="text-muted text-hover-primary">User</a>
+                    <a href="" class="text-muted text-hover-primary">Fitu</a>
                 </li>
                 <li class="breadcrumb-item">
                     <span class="bullet bg-gray-300 w-5px h-2px"></span>
@@ -27,7 +27,7 @@
         <!--begin::Header-->
         <div class="card-header border-0 pt-5">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label fw-bold fs-3 mb-1">Manage Data User</span>
+                <span class="card-label fw-bold fs-3 mb-1">Manage Data Fitur</span>
             </h3>
         </div>
         <!--end::Header-->
@@ -41,11 +41,7 @@
                         <thead>
                             <tr class="fw-semibold fs-6 text-gray-800 border-bottom border-gray-200">
                                 <th>No</th>
-                                <th>Nama</th>
-                                <th>Username</th>
-                                <th>No Hp</th>
-                                <th>Alamat</th>
-                                <th>Role</th>
+                                <th>Fitu</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -58,11 +54,7 @@
                                 @foreach ($data as $item)
                                     <tr>
                                         <td>{{ $loop->iteration + ($data->currentPage() - 1) * $data->perPage() }}</td>
-                                        <td>{{ $item->nama }}</td>
-                                        <td>{{ $item->username }}</td>
-                                        <td>{{ $item->no_hp ?? '-' }}</td>
-                                        <td>{{ $item->alamat ?? '-' }}</td>
-                                        <td>{{ $item->role }}</td>
+                                        <td>{{ $item->fitur }}</td>
                                         <td>
                                             <a href="javascript:void(0)" onclick="edit('{{ $item->id }}')"
                                                 class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
@@ -97,41 +89,14 @@
                     <form class="form" action="" method="POST" id="formAdd" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="">
                         <div class="mb-13 text-center">
-                            <h1 class="mb-3" id="m_modal_6_title">Data User</h1>
+                            <h1 class="mb-3" id="m_modal_6_title">Data Fitur</h1>
                         </div>
                         <div class="d-flex flex-column mb-8 fv-row">
                             <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                <span class="required">Nama</span>
+                                <span class="required">Fitur</span>
                             </label>
-                            <input type="text" class="form-control bg-transparent" placeholder="Masukkan Nama"
-                                name="nama" />
-                        </div>
-                        <div class="d-flex flex-column mb-8 fv-row">
-                            <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                <span class="required">Username</span>
-                            </label>
-                            <input type="text" class="form-control bg-transparent" placeholder="Masukkan Username"
-                                name="username" />
-                        </div>
-                        <div class="d-flex flex-column mb-8 fv-row">
-                            <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                <span class="required">Password</span>
-                            </label>
-                            <input type="password" class="form-control bg-transparent" placeholder="Masukkan Password"
-                                name="password" />
-                        </div>
-                        <div class="d-flex flex-column mb-8 fv-row">
-                            <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                <span class="required">No Hp</span>
-                            </label>
-                            <input type="number" class="form-control bg-transparent" placeholder="Masukkan Nomor Hp"
-                                name="no_hp" />
-                        </div>
-                        <div class="d-flex flex-column mb-8 fv-row">
-                            <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                <span class="required">Alamat</span>
-                            </label>
-                            <textarea name="alamat" placeholder="Alamat" autocomplete="off" class="form-control bg-transparent"></textarea>
+                            <input type="text" class="form-control bg-transparent" placeholder="Masukkan Fitur"
+                                name="fitur" />
                         </div>
                         <div class="text-center">
                             <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">Close</button>
@@ -155,7 +120,7 @@
         function add_ajax() {
             method = 'add';
             resetForm();
-            $('#m_modal_6_title').html("Tambah User");
+            $('#m_modal_6_title').html("Tambah Fitur");
             $('#m_form_1_msg').hide();
             $('#m_modal_6').modal('show');
         }
@@ -164,9 +129,9 @@
             let url;
 
             if (method === 'add') {
-                url = "{{ route('user.store') }}";
+                url = "{{ route('fitur.store') }}";
             } else {
-                url = "{{ route('user.update') }}";
+                url = "{{ route('fitur.update') }}";
             }
 
             const formData = new FormData($('#formAdd')[0]);
@@ -210,20 +175,17 @@
         function edit(id) {
             method = 'edit';
             resetForm();
-            $('#m_modal_6_title').html("Edit User");
+            $('#m_modal_6_title').html("Edit Fitur");
 
             $.ajax({
-                url: "{{ url('user/edit') }}/" + id,
+                url: "{{ url('fitur/edit') }}/" + id,
                 type: "GET",
                 dataType: "JSON",
                 success: function(data) {
                     if (data.data) {
                         $('#formAdd')[0].reset();
                         $('[name="id"]').val(data.data.id);
-                        $('[name="nama"]').val(data.data.nama);
-                        $('[name="username"]').val(data.data.username);
-                        $('[name="no_hp"]').val(data.data.no_hp);
-                        $('[name="alamat"]').val(data.data.alamat);
+                        $('[name="fitur"]').val(data.data.fitur);
                         $('#m_modal_6').modal('show');
                     } else {
                         Swal.fire("Oops", "Gagal mengambil data!", "error");
@@ -254,7 +216,7 @@
             }).then(function(result) {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: "{{ url('user') }}/" + id,
+                        url: "{{ url('fitur') }}/" + id,
                         type: "DELETE",
                         data: {
                             _token: '{{ csrf_token() }}'
