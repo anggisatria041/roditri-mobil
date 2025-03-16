@@ -8,7 +8,7 @@
             <span class="h-20px border-gray-200 border-start mx-4"></span>
             <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-1">
                 <li class="breadcrumb-item text-muted">
-                    <a href="" class="text-muted text-hover-primary">Fitu</a>
+                    <a href="" class="text-muted text-hover-primary">Fitur</a>
                 </li>
                 <li class="breadcrumb-item">
                     <span class="bullet bg-gray-300 w-5px h-2px"></span>
@@ -41,7 +41,7 @@
                         <thead>
                             <tr class="fw-semibold fs-6 text-gray-800 border-bottom border-gray-200">
                                 <th>No</th>
-                                <th>Fitu</th>
+                                <th>Fitur</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>

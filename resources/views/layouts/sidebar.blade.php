@@ -24,32 +24,14 @@
                     <span class="menu-heading fw-bold text-uppercase fs-7">Menu</span>
                 </div>
             </div>
-            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                <span class="menu-link">
+            <div class="menu-item">
+                <a class="menu-link {{ request()->routeIs('produk.index') ? 'active' : '' }}"
+                    href="{{ route('produk.index') }}">
                     <span class="menu-icon">
-                        <i class="ki-outline ki-address-book fs-2"></i>
+                        <i class="ki-outline ki-calendar-8 fs-2"></i>
                     </span>
-                    <span class="menu-title">Menu Dropdown</span>
-                    <span class="menu-arrow"></span>
-                </span>
-                <div class="menu-sub menu-sub-accordion">
-                    <div class="menu-item">
-                        <a class="menu-link" href="">
-                            <span class="menu-bullet">
-                                <span class="bullet bullet-dot"></span>
-                            </span>
-                            <span class="menu-title">Sub 1</span>
-                        </a>
-                    </div>
-                    <div class="menu-item">
-                        <a class="menu-link" href="">
-                            <span class="menu-bullet">
-                                <span class="bullet bullet-dot"></span>
-                            </span>
-                            <span class="menu-title">Sub 2</span>
-                        </a>
-                    </div>
-                </div>
+                    <span class="menu-title">Produk</span>
+                </a>
             </div>
             <div class="menu-item">
                 <a class="menu-link {{ request()->routeIs('fitur.index') ? 'active' : '' }}"

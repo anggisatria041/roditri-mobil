@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FiturController;
+use App\Http\Controllers\ProdukController;
 
 Route::get('/', [AuthController::class, 'home'])->name('home');
 Route::get('/mobil', [AuthController::class, 'mobil'])->name('mobil');
@@ -36,6 +37,15 @@ Route::middleware(['custom-auth'])->group(
             Route::get('/edit/{id}', [FiturController::class, 'edit'])->name('fitur.edit');
             Route::post('/update', [FiturController::class, 'update'])->name('fitur.update');
             Route::delete('/{id}', [FiturController::class, 'destroy'])->name('fitur.destroy');
+        });
+
+        // Produk
+        Route::prefix('produk')->group(function () {
+            Route::get('/', [ProdukController::class, 'index'])->name('produk.index');
+            Route::post('/store', [ProdukController::class, 'store'])->name('produk.store');
+            Route::get('/edit/{id}', [ProdukController::class, 'edit'])->name('produk.edit');
+            Route::post('/update', [ProdukController::class, 'update'])->name('produk.update');
+            Route::delete('/{id}', [ProdukController::class, 'destroy'])->name('produk.destroy');
         });
 
         // Logout

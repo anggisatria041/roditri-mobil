@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('tahun');
-            $table->string('harga');
+            $table->integer('harga');
             $table->string('deskripsi');
             $table->string('warna');
             $table->integer('kapasitas_mesin');
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('jumlah_muatan');
             $table->string('masa_berlaku_stnk');
             $table->integer('jarak_tempuh');
-            $table->integer('foto');
+            $table->string('foto');
             $table->timestamps();
         });
     }
