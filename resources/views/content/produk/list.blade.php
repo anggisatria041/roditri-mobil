@@ -83,7 +83,7 @@
                                         <td>{{ $item->bahan_bakar }}</td>
                                         <td>{{ $item->tipe }}</td>
                                         <td>
-                                            <a href="javascript:void(0)" onclick="edit('{{ $item->id }}')"
+                                            <a href="{{ url('produk/show/' . Crypt::encryptString($item->id)) }}"
                                                 class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                 <i class="ki-outline ki-information fs-2 text-primary"></i>
                                             </a>
@@ -230,6 +230,27 @@
                             </label>
                             <textarea name="deskripsi" placeholder="Deskripsi" autocomplete="off" class="form-control bg-transparent"></textarea>
                         </div>
+                        <div class="fv-row">
+                            <label class="required">Fitur</label>
+                            <div class="table-responsive">
+                                <table class="table align-middle table-row-dashed fs-6 gy-5">
+                                    <tbody class="text-gray-600 fw-semibold">
+                                        @foreach ($fitur as $value)
+                                            <tr>
+                                                <td>
+                                                    <label
+                                                        class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            value="{{ $value->id }}" name="fitur_id[]" />
+                                                        <span class="form-check-label">{{ $value->fitur }}</span>
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                         <div class="d-flex flex-column mb-8 fv-row">
                             <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
                                 <span class="required">Foto</span>
@@ -336,6 +357,13 @@
                         $('[name="warna"]').each(function() {
                             if ($(this).val() === data.data.warna) {
                                 $(this).prop('checked', true);
+                            }
+                        });
+                        $('[name="fitur_id[]"]').each(function() {
+                            if (data.fiturProduk.includes(parseInt($(this).val()))) {
+                                $(this).prop('checked', true);
+                            } else {
+                                $(this).prop('checked', false);
                             }
                         });
                         $('#m_modal_6').modal('show');

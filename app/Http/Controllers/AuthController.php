@@ -26,8 +26,11 @@ class AuthController extends Controller
         }
 
         if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
-            $request->session()->regenerate();
-            return redirect('/dashboard');
+            if (Auth::user()->role == 'admin') {
+                return redirect('/dashboard');
+            } elseif (Auth::user()->role == 'user') {
+                return redirect()->route('home');
+            }
         } else {
             return redirect()->route('login')->with('error', 'Username atau password salah!');
         }
@@ -87,38 +90,5 @@ class AuthController extends Controller
     public function register()
     {
         return view('auth.register');
-    }
-
-    public function home()
-    {
-        if (auth()->user() != null) {
-            return redirect('dashboard');
-        }
-        return view('page.home.index');
-    }
-
-    public function mobil()
-    {
-        return view('page.mobil.index');
-    }
-
-    public function detailMobil()
-    {
-        return view('page.mobil.detailMobil');
-    }
-
-    public function kontak()
-    {
-        return view('page.kontak.index');
-    }
-
-    public function pesanan()
-    {
-        return view('page.pesanan.index');
-    }
-
-    public function tentang()
-    {
-        return view('page.tentang.index');
     }
 }

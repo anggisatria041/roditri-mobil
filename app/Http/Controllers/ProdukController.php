@@ -7,6 +7,7 @@ use App\Models\Fitur;
 use App\Models\Produk;
 use App\Models\FiturProduk;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Crypt;
 
 class ProdukController extends Controller
 {
@@ -19,7 +20,8 @@ class ProdukController extends Controller
         $startYear = 2017;
         $years = range($currentYear, $startYear);
         $data = Produk::paginate(10);
-        return view('content.produk.list', compact('data', 'years'));
+        $fitur = Fitur::all();
+        return view('content.produk.list', compact('data', 'years', 'fitur'));
     }
 
     /**
@@ -77,6 +79,16 @@ class ProdukController extends Controller
             'foto' => $gambar
         ]);
 
+        $fitur_ids = $request->fitur_id;
+        $produk = $data;
+
+        foreach ($fitur_ids as $f_id) {
+            FiturProduk::create([
+                'fitur_id' => $f_id,
+                'produk_id' => $produk->id
+            ]);
+        }
+
         if ($data) {
             return response()->json([
                 'status' => true,
@@ -95,7 +107,12 @@ class ProdukController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $decryptedId = Crypt::decryptString($id);
+        $produk =  Produk::find($decryptedId);
+        $fitur =  Fitur::leftJoin('fitur_produk as fp', 'fp.fitur_id', '=', 'fitur.id')
+            ->select('fitur.*')
+            ->where('fp.produk_id', $decryptedId)->get();
+        return view('content.produk.detail', compact('produk', 'fitur'));
     }
 
     /**
@@ -104,7 +121,13 @@ class ProdukController extends Controller
     public function edit(string $id)
     {
         $data = Produk::findOrFail($id);
-        return response()->json(['data' => $data], 200);
+        $fiturProduk = FiturProduk::where('produk_id', $id)->pluck('fitur_id')->toArray();
+        $allFitur = Fitur::all();
+        return response()->json([
+            'data' => $data,
+            'fiturProduk' => $fiturProduk,
+            'allFitur' => $allFitur
+        ], 200);
     }
 
     /**
@@ -166,6 +189,28 @@ class ProdukController extends Controller
             ]);
         }
 
+        $fitur_ids = $request->fitur_id ?? [];
+
+        $existingFitur = FiturProduk::where('produk_id', $id)
+            ->pluck('fitur_id')
+            ->toArray();
+
+        $fiturToDelete = array_diff($existingFitur, $fitur_ids);
+        if (!empty($fiturToDelete)) {
+            FiturProduk::where('produk_id', $id)
+                ->whereIn('fitur_id', $fiturToDelete)
+                ->delete();
+        }
+        $fiturToAdd = array_diff($fitur_ids, $existingFitur);
+        if (!empty($fiturToAdd)) {
+            foreach ($fiturToAdd as $fitur) {
+                FiturProduk::create([
+                    'produk_id' => $id,
+                    'fitur_id' => $fitur
+                ]);
+            }
+        }
+
         if ($data) {
             return response()->json([
                 'status' => true,
@@ -194,6 +239,7 @@ class ProdukController extends Controller
         }
 
         $data->delete();
+        FiturProduk::where('produk_id', $id)->delete();
 
         return response()->json([
             'status' => true,

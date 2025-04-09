@@ -6,13 +6,29 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FiturController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\PageController;
 
-Route::get('/', [AuthController::class, 'home'])->name('home');
-Route::get('/mobil', [AuthController::class, 'mobil'])->name('mobil');
-Route::get('/detailMobil', [AuthController::class, 'detailMobil'])->name('detailMobil');
-Route::get('/pesanan', [AuthController::class, 'pesanan'])->name('pesanan');
-Route::get('/tentang', [AuthController::class, 'tentang'])->name('tentang');
-Route::get('/kontak', [AuthController::class, 'kontak'])->name('kontak');
+Route::get('/', [PageController::class, 'home'])->name('home');
+
+// Page All
+Route::prefix('roditri-mobil')->group(function () {
+
+    // Home
+    Route::get('/home', [PageController::class, 'home'])->name('home');
+
+    // Tentang
+    Route::get('/tentang', [PageController::class, 'tentang'])->name('tentang');
+
+    // Produk
+    Route::get('/produk', [PageController::class, 'produk'])->name('produk');
+    Route::get('/detail-produk', [PageController::class, 'detail_produk'])->name('detail-produk');
+
+    // Pesanan
+    Route::get('/pesanan', [PageController::class, 'pesanan'])->name('pesanan');
+
+    // Kontak
+    Route::get('/kontak', [PageController::class, 'kontak'])->name('kontak');
+});
 
 Route::middleware(['custom-auth'])->group(
     function () {
@@ -46,6 +62,7 @@ Route::middleware(['custom-auth'])->group(
             Route::get('/edit/{id}', [ProdukController::class, 'edit'])->name('produk.edit');
             Route::post('/update', [ProdukController::class, 'update'])->name('produk.update');
             Route::delete('/{id}', [ProdukController::class, 'destroy'])->name('produk.destroy');
+            Route::get('/show/{id}', [ProdukController::class, 'show'])->name('produk.show');
         });
 
         // Logout

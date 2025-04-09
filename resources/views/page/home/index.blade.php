@@ -75,102 +75,40 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-6 text-center">
                         <div class="section-title">
-                            <h1>Produk Terbaru</h1>
+                            <h1>Produk Kami</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                                labore et
+                                dolore
+                                magna aliqua.</p>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-product">
-                            <img class="img-fluid" src="{{ asset('themes/img/product/mobil-1.png') }}" alt="">
-                            <div class="product-details">
-                                <h6>Toyota Avanza 2022</h6>
-                                <div class="price">
-                                    <h6>Rp 150.000.000</h6>
-                                    <h6 class="l-through">Rp 210.000.000</h6>
-                                </div>
-                                <div class="prd-bottom">
+                    @foreach ($produk as $value)
+                        <div class="col-lg-3 col-md-6">
+                            <div class="single-product">
+                                <img class="img-fluid" src="{{ Storage::url($value->foto) }}" alt="">
+                                <div class="product-details">
+                                    <h6>{{ $value->nama }} {{ $value->tahun }}</h6>
+                                    <div class="price">
+                                        <h6> {{ isset($value->harga) ? 'Rp ' . number_format($value->harga, 0, ',', '.') : 'Rp 0' }}
+                                        </h6>
+                                    </div>
+                                    <div class="prd-bottom">
 
-                                    <a href="" class="social-info">
-                                        <span class="ti-bag"></span>
-                                        <p class="hover-text">Checkout</p>
-                                    </a>
-                                    <a href="{{ route('detailMobil') }}" class="social-info">
-                                        <span class="lnr lnr-move"></span>
-                                        <p class="hover-text">view detail</p>
-                                    </a>
+                                        <a href="" class="social-info">
+                                            <span class="ti-bag"></span>
+                                            <p class="hover-text">Checkout</p>
+                                        </a>
+                                        <a href="{{ route('detail-produk') }}" class="social-info">
+                                            <span class="lnr lnr-move"></span>
+                                            <p class="hover-text">view detail</p>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-product">
-                            <img class="img-fluid" src="{{ asset('themes/img/product/mobil-1.png') }}" alt="">
-                            <div class="product-details">
-                                <h6>Toyota Avanza 2022</h6>
-                                <div class="price">
-                                    <h6>Rp 150.000.000</h6>
-                                    <h6 class="l-through">Rp 210.000.000</h6>
-                                </div>
-                                <div class="prd-bottom">
-
-                                    <a href="" class="social-info">
-                                        <span class="ti-bag"></span>
-                                        <p class="hover-text">Checkout</p>
-                                    </a>
-                                    <a href="{{ route('detailMobil') }}" class="social-info">
-                                        <span class="lnr lnr-move"></span>
-                                        <p class="hover-text">view detail</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-product">
-                            <img class="img-fluid" src="{{ asset('themes/img/product/mobil-1.png') }}" alt="">
-                            <div class="product-details">
-                                <h6>Toyota Avanza 2022</h6>
-                                <div class="price">
-                                    <h6>Rp 150.000.000</h6>
-                                    <h6 class="l-through">Rp 210.000.000</h6>
-                                </div>
-                                <div class="prd-bottom">
-                                    <a href="" class="social-info">
-                                        <span class="ti-bag"></span>
-                                        <p class="hover-text">Checkout</p>
-                                    </a>
-                                    <a href="{{ route('detailMobil') }}" class="social-info">
-                                        <span class="lnr lnr-move"></span>
-                                        <p class="hover-text">view detail</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-product">
-                            <img class="img-fluid" src="{{ asset('themes/img/product/mobil-1.png') }}" alt="">
-                            <div class="product-details">
-                                <h6>Toyota Avanza 2022</h6>
-                                <div class="price">
-                                    <h6>Rp 150.000.000</h6>
-                                    <h6 class="l-through">Rp 210.000.000</h6>
-                                </div>
-                                <div class="prd-bottom">
-
-                                    <a href="" class="social-info">
-                                        <span class="ti-bag"></span>
-                                        <p class="hover-text">Checkout</p>
-                                    </a>
-                                    <a href="{{ route('detailMobil') }}" class="social-info">
-                                        <span class="lnr lnr-move"></span>
-                                        <p class="hover-text">view detail</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

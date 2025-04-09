@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="menu-item">
-                <a class="menu-link {{ request()->routeIs('produk.index') ? 'active' : '' }}"
+                <a class="menu-link {{ request()->routeIs('produk.*') ? 'active' : '' }}"
                     href="{{ route('produk.index') }}">
                     <span class="menu-icon">
                         <i class="ki-outline ki-calendar-8 fs-2"></i>
