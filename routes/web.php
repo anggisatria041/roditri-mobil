@@ -46,7 +46,7 @@ Route::middleware(['custom-auth'])->group(
             Route::delete('/{id}', [UserController::class, 'destroy'])->name('user.destroy');
         });
 
-        // User
+        // Fitur
         Route::prefix('fitur')->group(function () {
             Route::get('/', [FiturController::class, 'index'])->name('fitur.index');
             Route::post('/store', [FiturController::class, 'store'])->name('fitur.store');
