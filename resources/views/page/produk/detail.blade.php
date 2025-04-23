@@ -85,7 +85,7 @@
                                         <h5>Bahan Bakar</h5>
                                     </td>
                                     <td>
-                                        <h5>Bensin</h5>
+                                        <h5>{{ $produk->bahan_bakar }}</h5>
                                     </td>
                                 </tr>
                                 <tr>
@@ -93,7 +93,7 @@
                                         <h5>Tipe</h5>
                                     </td>
                                     <td>
-                                        <h5>1.5 G</h5>
+                                        <h5>{{ $produk->tipe }}</h5>
                                     </td>
                                 </tr>
                                 <tr>
@@ -101,7 +101,7 @@
                                         <h5>Jumlah Muatan</h5>
                                     </td>
                                     <td>
-                                        <h5>6 Orang</h5>
+                                        <h5>{{ $produk->jumlah_muatan }} Orang</h5>
                                     </td>
                                 </tr>
                                 <tr>
@@ -109,7 +109,7 @@
                                         <h5>Masa Berlaku STNK</h5>
                                     </td>
                                     <td>
-                                        <h5>Mei 2023</h5>
+                                        <h5>{{ $produk->masa_berlaku_stnk }}</h5>
                                     </td>
                                 </tr>
                                 <tr>
@@ -117,7 +117,7 @@
                                         <h5>Jarak Tempuh</h5>
                                     </td>
                                     <td>
-                                        <h5>1500 Km</h5>
+                                        <h5>{{ $produk->jarak_tempuh }} Km</h5>
                                     </td>
                                 </tr>
                             </tbody>
@@ -137,11 +137,9 @@
                                     <div class="rating_list">
                                         <h3>Fitur</h3>
                                         <ul class="list">
-                                            <li><i class="fa fa-star"></i> Interior Canggih</li>
-                                            <li><i class="fa fa-star"></i> Desain Modern</li>
-                                            <li><i class="fa fa-star"></i> Kamera 360 Derajat</li>
-                                            <li><i class="fa fa-star"></i> Layar Sentuh 8 Inc</li>
-                                            <li><i class="fa fa-star"></i> Bluetooth Connected</li>
+                                            @foreach ($fitur as $item)
+                                                <li><i class="fa fa-car"></i> {{ $item->fitur }}</li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>

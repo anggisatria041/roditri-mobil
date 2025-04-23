@@ -29,78 +29,32 @@
                 <section class="lattest-product-area pb-40 category-list">
                     <div class="row">
                         <!-- single product -->
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-product">
-                                <img class="img-fluid" img src="{{ asset('assets/media/products/mobil-1.png') }}"
-                                    alt="">
-                                <div class="product-details">
-                                    <h6>Toyota Avanza 2022</h6>
-                                    <div class="price">
-                                        <h6>Rp 150.000.000</h6>
-                                        <h6 class="l-through">Rp 210.000.000</h6>
+                        @foreach ($produk as $value)
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-product">
+                                    <div class="product-image-wrapper"
+                                        style="width: 100%; height: 250px; background: #f9f9f9; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                                        <img src="{{ Storage::url($value->foto) }}" alt="{{ $value->nama }}"
+                                            style="max-width: 100%; max-height: 100%; object-fit: contain;">
                                     </div>
-                                    <div class="prd-bottom">
-
-                                        <a href="" class="social-info">
-                                            <span class="ti-bag"></span>
-                                            <p class="hover-text">Checkout</p>
-                                        </a>
-                                        <a href="{{ route('detail-produk') }}" class="social-info">
-                                            <span class="lnr lnr-move"></span>
-                                            <p class="hover-text">view detail</p>
-                                        </a>
+                                    <div class="product-details">
+                                        <h6>{{ $value->nama }} {{ $value->tahun }}</h6>
+                                        <div class="price">
+                                            <h6>{{ isset($value->harga) ? 'Rp ' . number_format($value->harga, 0, ',', '.') : 'Rp 0' }}
+                                            </h6>
+                                        </div>
+                                        <div class="prd-bottom">
+                                            <a href="{{ url('roditri-mobil/detail_produk/' . Crypt::encryptString($value->id)) }}"
+                                                class="social-info">
+                                                <span class="lnr lnr-move"></span>
+                                                <p class="hover-text">view detail</p>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                         <!-- single product -->
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-product">
-                                <img class="img-fluid" img src="{{ asset('assets/media/products/mobil-1.png') }}"
-                                    alt="">
-                                <div class="product-details">
-                                    <h6>Toyota Avanza 2022</h6>
-                                    <div class="price">
-                                        <h6>Rp 150.000.000</h6>
-                                    </div>
-                                    <div class="prd-bottom">
-
-                                        <a href="" class="social-info">
-                                            <span class="ti-bag"></span>
-                                            <p class="hover-text">Checkout</p>
-                                        </a>
-                                        <a href="{{ route('detail-produk') }}" class="social-info">
-                                            <span class="lnr lnr-move"></span>
-                                            <p class="hover-text">view detail</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- single product -->
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-product">
-                                <img class="img-fluid" img src="{{ asset('assets/media/products/mobil-1.png') }}"
-                                    alt="">
-                                <div class="product-details">
-                                    <h6>Toyota Avanza 2022</h6>
-                                    <div class="price">
-                                        <h6>Rp 150.000.000</h6>
-                                    </div>
-                                    <div class="prd-bottom">
-
-                                        <a href="" class="social-info">
-                                            <span class="ti-bag"></span>
-                                            <p class="hover-text">Checkout</p>
-                                        </a>
-                                        <a href="{{ route('detail-produk') }}" class="social-info">
-                                            <span class="lnr lnr-move"></span>
-                                            <p class="hover-text">view detail</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </section>
             </div>

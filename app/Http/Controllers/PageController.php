@@ -24,7 +24,8 @@ class PageController extends Controller
 
     public function produk()
     {
-        return view('page.produk.index');
+        $produk = Produk::all();
+        return view('page.produk.index',compact('produk'));
     }
 
     public function detail_produk($id)
