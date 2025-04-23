@@ -11,27 +11,22 @@
             </div>
             <div class="col-lg-3  col-md-6 col-sm-6">
                 <div class="single-footer-widget mail-chimp">
-                    <h6 class="mb-20">Instragram Feed</h6>
-                    <!-- <ul class="instafeed d-flex flex-wrap">
-                        <li><img src="{{ asset('themes/img/i1.jpg') }}" alt=""></li>
-                        <li><img src="{{ asset('themes/img/i2.jpg') }}" alt=""></li>
-                        <li><img src="{{ asset('themes/img/i3.jpg') }}" alt=""></li>
-                        <li><img src="{{ asset('themes/img/i4.jpg') }}" alt=""></li>
-                        <li><img src="{{ asset('themes/img/i5.jpg') }}" alt=""></li>
-                        <li><img src="{{ asset('themes/img/i6.jpg') }}" alt=""></li>
-                        <li><img src="{{ asset('themes/img/i7.jpg') }}" alt=""></li>
-                        <li><img src="{{ asset('themes/img/i8.jpg') }}" alt=""></li>
-                    </ul> -->
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-6 col-sm-6">
-                <div class="single-footer-widget">
-                    <h6>Follow Us</h6>
-                    <p>Let us be social</p>
-                    <div class="footer-social d-flex align-items-center">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    <h6 class="mb-20">Kontak Kami</h6>
+                    <div class="contact_info">
+                        <div class="info_item">
+                            <i class="fa fa-home text-white"></i>
+                            <p>Jalan Arifin Ahmad Sidomulyo Tim., Kec. Marpoyan Damai Kota
+                                Pekanbaru, Riau</p>
+                            <p></p>
+                        </div>
+                        <div class="info_item">
+                            <i class="fa fa-phone text-white"></i>
+                            <p>+62 813-8343-5007</p>
+                        </div>
+                        <div class=" info_item">
+                            <i class="fa fa-envelope text-white"></i>
+                            <p>RoditriMobil@gmail.com</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -40,7 +35,7 @@
             <p class="footer-text m-0">
                 Copyright &copy;
                 <script>
-                document.write(new Date().getFullYear());
+                    document.write(new Date().getFullYear());
                 </script> All rights reserved | This template is made with by <a href="https://colorlib.com"
                     target="_blank">RoditriMobil</a>
             </p>
