@@ -21,7 +21,7 @@ Route::prefix('roditri-mobil')->group(function () {
 
     // Produk
     Route::get('/produk', [PageController::class, 'produk'])->name('produk');
-    Route::get('/detail-produk', [PageController::class, 'detail_produk'])->name('detail-produk');
+    Route::get('/detail_produk/{id}', [PageController::class, 'detail_produk'])->name('detail-produk');
 
     // Pesanan
     Route::get('/pesanan', [PageController::class, 'pesanan'])->name('pesanan');

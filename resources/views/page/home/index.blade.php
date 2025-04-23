@@ -87,7 +87,11 @@
                     @foreach ($produk as $value)
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="{{ Storage::url($value->foto) }}" alt="">
+                                <div class="product-img-container"
+                                    style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                                    <img class="img-fluid" style="max-height: 100%; max-width: 100%; object-fit: contain;"
+                                        src="{{ Storage::url($value->foto) }}" alt="{{ $value->nama }}">
+                                </div>
                                 <div class="product-details">
                                     <h6>{{ $value->nama }} {{ $value->tahun }}</h6>
                                     <div class="price">
@@ -95,12 +99,8 @@
                                         </h6>
                                     </div>
                                     <div class="prd-bottom">
-
-                                        <a href="" class="social-info">
-                                            <span class="ti-bag"></span>
-                                            <p class="hover-text">Checkout</p>
-                                        </a>
-                                        <a href="{{ route('detail-produk') }}" class="social-info">
+                                        <a href="{{ url('roditri-mobil/detail_produk/' . Crypt::encryptString($value->id)) }}"
+                                            class="social-info">
                                             <span class="lnr lnr-move"></span>
                                             <p class="hover-text">view detail</p>
                                         </a>
