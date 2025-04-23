@@ -130,7 +130,7 @@
                             <div class="row total_rate">
                                 <div class="col-6">
                                     <div class="box_total">
-                                        <h4>Toyota Avanza 2022</h4>
+                                        <h4>{{ $produk->nama }} {{ $produk->tahun }}</h4>
                                     </div>
                                 </div>
                                 <div class="col-6">
