@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Produk;
+use App\Models\Fitur;
+use Illuminate\Support\Facades\Crypt;
 
 class PageController extends Controller
 {
@@ -25,9 +27,14 @@ class PageController extends Controller
         return view('page.produk.index');
     }
 
-    public function detail_produk()
+    public function detail_produk($id)
     {
-        return view('page.produk.detail');
+        $decryptedId = Crypt::decryptString($id);
+        $produk =  Produk::find($decryptedId);
+        $fitur =  Fitur::leftJoin('fitur_produk as fp', 'fp.fitur_id', '=', 'fitur.id')
+            ->select('fitur.*')
+            ->where('fp.produk_id', $decryptedId)->get();
+        return view('page.produk.detail', compact('produk', 'fitur'));
     }
 
     public function kontak()
