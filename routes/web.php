@@ -28,6 +28,9 @@ Route::prefix('roditri-mobil')->group(function () {
 
     // Kontak
     Route::get('/kontak', [PageController::class, 'kontak'])->name('kontak');
+
+    //Invoice
+    Route::get('/invoice', [PageController::class, 'invoice'])->name('invoice');
 });
 
 Route::middleware(['custom-auth'])->group(

@@ -25,7 +25,7 @@ class PageController extends Controller
     public function produk()
     {
         $produk = Produk::all();
-        return view('page.produk.index',compact('produk'));
+        return view('page.produk.index', compact('produk'));
     }
 
     public function detail_produk($id)
@@ -36,6 +36,11 @@ class PageController extends Controller
             ->select('fitur.*')
             ->where('fp.produk_id', $decryptedId)->get();
         return view('page.produk.detail', compact('produk', 'fitur'));
+    }
+
+    public function invoice()
+    {
+        return view('page.invoice.index');
     }
 
     public function kontak()
