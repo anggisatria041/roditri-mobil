@@ -42,7 +42,12 @@
                     <p>{{ $produk->deskripsi }}</p>
 
                     <div class="card_area d-flex align-items-center">
-                        <a class="primary-btn" href="#">WhatsApp</a>
+                        <a class="btn btn-success mr-3"
+                            href="https://wa.me/6285158965322?text=Halo%20saya%20ingin%20bertanya%20tentang%20mobil"
+                            target="_blank">WhatsApp</a>
+
+                        <a class="btn btn-danger" href="#" data-bs-toggle="modal"
+                            data-bs-target="#cicilanModal">Cicilan</a>
                     </div>
                 </div>
             </div>
@@ -145,4 +150,48 @@
         </div>
     </div>
 </section>
+
+<!-- Modal Cicilan -->
+<div class="modal fade" id="cicilanModal" tabindex="-1" aria-labelledby="cicilanModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cicilanModalLabel">Form Pengajuan Cicilan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formCicilan">
+                    <div class="mb-3">
+                        <label for="nama" class="form-label">Nama Lengkap</label>
+                        <input type="text" class="form-control" id="nama" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="KTP" class="form-label">KTP</label>
+                        <input type="file" class="form-control" id="KTP" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="slip_gaji" class="form-label">Slip Gaji</label>
+                        <input type="file" class="form-control" id="slip_gaji" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tenor" class="form-label">Tenor (bulan)</label>
+                        <select class="form-select" id="tenor" required>
+                            <option value="" disabled selected>Pilih tenor</option>
+                            <option value="6">6 bulan (3.400.000 / Bln)</option>
+                            <option value="12">12 bulan (2.400.000 / Bln)</option>
+                            <option value="24">24 bulan (1.400.000 / Bln)</option>
+                        </select>
+                    </div>
+                    <div class="mt-5">
+                        <button type="submit" class="btn btn-primary">Ajukan Cicilan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

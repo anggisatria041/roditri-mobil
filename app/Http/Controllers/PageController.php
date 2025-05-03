@@ -53,6 +53,16 @@ class PageController extends Controller
         return view('page.pesanan.index');
     }
 
+    public function detail_cicilan($id)
+    {
+        $decryptedId = Crypt::decryptString($id);
+        $produk =  Produk::find($decryptedId);
+        $fitur =  Fitur::leftJoin('fitur_produk as fp', 'fp.fitur_id', '=', 'fitur.id')
+            ->select('fitur.*')
+            ->where('fp.produk_id', $decryptedId)->get();
+        return view('page.pesanan.detail', compact('produk', 'fitur'));
+    }
+
     public function tentang()
     {
         return view('page.tentang.index');

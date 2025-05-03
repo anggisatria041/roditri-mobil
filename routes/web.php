@@ -25,6 +25,7 @@ Route::prefix('roditri-mobil')->group(function () {
 
     // Pesanan
     Route::get('/pesanan', [PageController::class, 'pesanan'])->name('pesanan');
+    Route::get('/detail_cicilan/{id}', [PageController::class, 'detail_cicilan'])->name('detail_cicilan');
 
     // Kontak
     Route::get('/kontak', [PageController::class, 'kontak'])->name('kontak');
