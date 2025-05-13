@@ -144,10 +144,52 @@
                         </div>
                         <div class="d-flex flex-column mb-8 fv-row">
                             <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                <span class="required">Harga</span>
+                                <span class="required">Harga Cash</span>
                             </label>
                             <input type="text" class="form-control bg-transparent" placeholder="Rp" name="harga"
                                 oninput="formatRupiah(this)" />
+                        </div>
+                        <div class="d-flex flex-stack mb-4">
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-6">Detail Cicilan</label>
+                                <div class="fs-7 text-muted">Tambahkan harga cicilan untuk masing-masing tenor</div>
+                            </div>
+                        </div>
+                        <div class="row g-9 mb-8">
+                            <div class="col-md-6 fv-row">
+                                <label class="required fs-6 fw-semibold mb-2">Uang Muka (DP)</label>
+                                <input type="text" class="form-control bg-transparent" placeholder="Rp" name="dp"
+                                    oninput="formatRupiah(this)" />
+                            </div>
+                            <div class="col-md-6 fv-row">
+                                <label class="required fs-6 fw-semibold mb-2">Tenor 12 Bulan</label>
+                                <input type="text" class="form-control bg-transparent" placeholder="Rp"
+                                    name="tenor_12" oninput="formatRupiah(this)" />
+                            </div>
+                        </div>
+                        <div class="row g-9 mb-8">
+                            <div class="col-md-6 fv-row">
+                                <label class="required fs-6 fw-semibold mb-2">Tenor 24 Bulan</label>
+                                <input type="text" class="form-control bg-transparent" placeholder="Rp"
+                                    name="tenor_24" oninput="formatRupiah(this)" />
+                            </div>
+                            <div class="col-md-6 fv-row">
+                                <label class="required fs-6 fw-semibold mb-2">Tenor 36 Bulan</label>
+                                <input type="text" class="form-control bg-transparent" placeholder="Rp"
+                                    name="tenor_36" oninput="formatRupiah(this)" />
+                            </div>
+                        </div>
+                        <div class="row g-9 mb-8">
+                            <div class="col-md-6 fv-row">
+                                <label class="required fs-6 fw-semibold mb-2">Tenor 48 Bulan</label>
+                                <input type="text" class="form-control bg-transparent" placeholder="Rp"
+                                    name="tenor_48" oninput="formatRupiah(this)" />
+                            </div>
+                            <div class="col-md-6 fv-row">
+                                <label class="required fs-6 fw-semibold mb-2">Tenor 60 Bulan</label>
+                                <input type="text" class="form-control bg-transparent" placeholder="Rp"
+                                    name="tenor_60" oninput="formatRupiah(this)" />
+                            </div>
                         </div>
                         <div class="d-flex flex-column mb-8 fv-row">
                             <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
@@ -347,6 +389,12 @@
                         $('[name="nama"]').val(data.data.nama);
                         $('[name="tahun"]').val(data.data.tahun).change();
                         $('[name="harga"]').val(formatRupiahValue(data.data.harga));
+                        $('[name="dp"]').val(formatRupiahValue(data.cicilan.dp));
+                        $('[name="tenor_12"]').val(formatRupiahValue(data.cicilan.tenor_12));
+                        $('[name="tenor_24"]').val(formatRupiahValue(data.cicilan.tenor_24));
+                        $('[name="tenor_36"]').val(formatRupiahValue(data.cicilan.tenor_36));
+                        $('[name="tenor_48"]').val(formatRupiahValue(data.cicilan.tenor_48));
+                        $('[name="tenor_60"]').val(formatRupiahValue(data.cicilan.tenor_60));
                         $('[name="kapasitas_mesin"]').val(data.data.kapasitas_mesin);
                         $('[name="bahan_bakar"]').val(data.data.bahan_bakar).change();
                         $('[name="tipe"]').val(data.data.tipe);

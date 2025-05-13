@@ -39,12 +39,13 @@ class AuthController extends Controller
     public function postRegister(Request $request)
     {
 
-        // if (User::where('email', $request->email)->exists()) {
-        //     return redirect()->route('register')->with('error', 'Email sudah pernah didaftarkan');
-        // }
+        if (User::where('email', $request->email)->exists()) {
+            return redirect()->route('register')->with('error', 'Email sudah pernah didaftarkan');
+        }
 
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
+            'email' => 'required',
             'no_hp' => 'required',
             'alamat' => 'required',
             'username' => 'required',
@@ -58,6 +59,7 @@ class AuthController extends Controller
         $data = new User;
 
         $data->nama = $request->nama;
+        $data->email = $request->email;
         $data->username = $request->username;
         $data->password = Hash::make($request->input('password'));
         $data->no_hp = $request->no_hp;

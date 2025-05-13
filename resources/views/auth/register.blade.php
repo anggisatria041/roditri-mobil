@@ -84,6 +84,13 @@
                             </div>
                             <div class="fv-row mb-3">
                                 <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                                    <span class="required">Email</span>
+                                </label>
+                                <input type="email" placeholder="Email" name="email" autocomplete="off"
+                                    class="form-control bg-transparent" />
+                            </div>
+                            <div class="fv-row mb-3">
+                                <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
                                     <span class="required">Username</span>
                                 </label>
                                 <input type="text" placeholder="Username" name="username" autocomplete="off"

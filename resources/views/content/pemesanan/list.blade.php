@@ -4,11 +4,11 @@
         <div data-kt-swapper="true" data-kt-swapper-mode="prepend"
             data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
             class="page-title d-flex align-items-center me-3 flex-wrap lh-1">
-            <h1 class="d-flex align-items-center text-gray-900 fw-bold my-1 fs-3">Pengaturan</h1>
+            <h1 class="d-flex align-items-center text-gray-900 fw-bold my-1 fs-3">Pemesanan</h1>
             <span class="h-20px border-gray-200 border-start mx-4"></span>
             <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-1">
                 <li class="breadcrumb-item text-muted">
-                    <a href="" class="text-muted text-hover-primary">User</a>
+                    <a href="" class="text-muted text-hover-primary">Pemesanan</a>
                 </li>
                 <li class="breadcrumb-item">
                     <span class="bullet bg-gray-300 w-5px h-2px"></span>
@@ -17,36 +17,30 @@
             </ul>
         </div>
         <div class="d-flex align-items-center py-1">
-            <a href="#" class="btn btn-sm btn-primary" onclick="add_ajax()"
-                data-bs-target="#kt_modal_create_app">Tambah</a>
+            <a href="#" class="btn btn-sm btn-primary" onclick="add_ajax()">Tambah</a>
         </div>
     </div>
 @endsection
 @section('content')
     <div class="card mb-5 mb-xl-8">
-        <!--begin::Header-->
         <div class="card-header border-0 pt-5">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label fw-bold fs-3 mb-1">Manage Data User</span>
+                <span class="card-label fw-bold fs-3 mb-1">Manage Data Pemesanan</span>
             </h3>
         </div>
-        <!--end::Header-->
-        <!--begin::Body-->
         <div class="card-body py-3">
-            <!--begin::Table container-->
             <div class="table-responsive">
-                <!--begin::Table-->
                 <div class="table-responsive">
                     <table class="table table-striped gy-7 gs-7">
                         <thead>
                             <tr class="fw-semibold fs-6 text-gray-800 border-bottom border-gray-200">
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>Email</th>
-                                <th>Username</th>
-                                <th>No Hp</th>
-                                <th>Alamat</th>
-                                <th>Role</th>
+                                <th>Produk</th>
+                                <th>Harga</th>
+                                <th>Jenis Pembayaran</th>
+                                <th>Status Pembayaran</th>
+                                <th>Status Pemesanan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -59,17 +53,52 @@
                                 @foreach ($data as $item)
                                     <tr>
                                         <td>{{ $loop->iteration + ($data->currentPage() - 1) * $data->perPage() }}</td>
-                                        <td>{{ $item->nama }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td>{{ $item->username }}</td>
-                                        <td>{{ $item->no_hp ?? '-' }}</td>
-                                        <td>{{ $item->alamat ?? '-' }}</td>
-                                        <td>{{ $item->role }}</td>
+                                        <td>{{ $item->user->nama }}</td>
+                                        <td>{{ $item->produk->nama }}</td>
+                                        <td> {{ isset($item->produk->harga) ? 'Rp ' . number_format($item->produk->harga, 0, ',', '.') : 'Rp 0' }}
+                                        </td>
                                         <td>
-                                            <a href="javascript:void(0)" onclick="edit('{{ $item->id }}')"
+                                            @if ($item->jenis_pembayaran == 'Tunai')
+                                                <span class="badge badge-light-success">Tunai</span>
+                                            @else
+                                                <span class="badge badge-light-warning">Kredit</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($item->jenis_pembayaran == 'kredit' && $item->status_pembayaran != 'Lunas')
+                                                <span class="badge badge-light-primary">Cicilan</span>
+                                            @else
+                                                @if ($item->status_pembayaran == 'Pending')
+                                                    <span class="badge badge-light-warning">Pending</span>
+                                                @elseif($item->status_pembayaran == 'Lunas')
+                                                    <span class="badge badge-light-success">Lunas</span>
+                                                @else
+                                                    <span class="badge badge-light-danger">Ditolak</span>
+                                                @endif
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($item->status_pemesanan == 'Proses')
+                                                <span class="badge badge-light-primary">Proses</span>
+                                            @elseif($item->status_pemesanan == 'Diterima')
+                                                <span class="badge badge-light-success">Diterima</span>
+                                            @elseif($item->status_pemesanan == 'Selesai')
+                                                <span class="badge badge-light-success">Selesai</span>
+                                            @else
+                                                <span class="badge badge-light-danger">Ditolak</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('pemesanan/show/' . Crypt::encryptString($item->id)) }}"
                                                 class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                                <i class="ki-outline ki-pencil fs-2 text-info"></i>
+                                                <i class="ki-outline ki-information fs-2 text-primary"></i>
                                             </a>
+                                            @if ($item->jenis_pembayaran == 'Tunai')
+                                                <a href="javascript:void(0)" onclick="edit('{{ $item->id }}')"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                    <i class="ki-outline ki-pencil fs-2 text-info"></i>
+                                                </a>
+                                            @endif
                                             <a href="javascript:void(0)" onclick="hapus('{{ $item->id }}')"
                                                 class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
                                                 <i class="ki-outline ki-trash fs-2 text-danger"></i>
@@ -87,7 +116,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="m_modal_6" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="modalPemesanan" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered mw-650px">
             <div class="modal-content rounded">
                 <div class="modal-header pb-0 border-0 justify-content-end">
@@ -96,51 +125,52 @@
                     </div>
                 </div>
                 <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
-                    <form class="form" action="" method="POST" id="formAdd" enctype="multipart/form-data">
+                    <form class="form" action="" method="POST" id="formPemesanan" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="">
                         <div class="mb-13 text-center">
-                            <h1 class="mb-3" id="m_modal_6_title">Data User</h1>
+                            <h1 class="mb-3" id="modalPemesanan_title">Titla</h1>
                         </div>
                         <div class="d-flex flex-column mb-8 fv-row">
                             <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                <span class="required">Nama</span>
+                                <span class="required">Pelanggan</span>
                             </label>
-                            <input type="text" class="form-control bg-transparent" placeholder="Masukkan Nama"
-                                name="nama" />
+                            <select class="form-select bg-transparent" data-control="select2" data-hide-search="true"
+                                name="user_id">
+                                <option value="">Pilih Pelanggan</option>
+                                @foreach ($user as $item)
+                                    <option value="{{ $item->id }}">{{ $item->nama }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="d-flex flex-column mb-8 fv-row">
                             <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                <span class="required">Email</span>
+                                <span class="required">Produk</span>
                             </label>
-                            <input type="email" class="form-control bg-transparent" placeholder="Masukkan Email"
-                                name="email" />
+                            <select class="form-select bg-transparent" data-control="select2" data-hide-search="true"
+                                name="produk_id">
+                                <option value="">Pilih Produk</option>
+                                @foreach ($produk as $item)
+                                    <option value="{{ $item->id }}">{{ $item->nama }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="d-flex flex-column mb-8 fv-row">
                             <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                <span class="required">Username</span>
+                                <span class="required">Jenis Pembayaran</span>
                             </label>
-                            <input type="text" class="form-control bg-transparent" placeholder="Masukkan Username"
-                                name="username" />
+                            <select class="form-select bg-transparent" data-control="select2" data-hide-search="true"
+                                name="jenis_pembayaran">
+                                <option value="">Pilih Jenis</option>
+                                <option value="Tunai">Tunai</option>
+                            </select>
                         </div>
                         <div class="d-flex flex-column mb-8 fv-row">
                             <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                <span>Password</span>
+                                <span>KTP</span>
                             </label>
-                            <input type="password" class="form-control bg-transparent" placeholder="Masukkan Password"
-                                name="password" />
-                        </div>
-                        <div class="d-flex flex-column mb-8 fv-row">
-                            <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                <span class="required">No Hp</span>
-                            </label>
-                            <input type="number" class="form-control bg-transparent" placeholder="Masukkan Nomor Hp"
-                                name="no_hp" />
-                        </div>
-                        <div class="d-flex flex-column mb-8 fv-row">
-                            <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                <span class="required">Alamat</span>
-                            </label>
-                            <textarea name="alamat" placeholder="Alamat" autocomplete="off" class="form-control bg-transparent"></textarea>
+                            <input type="file" class="form-control bg-transparent" name="ktp" />
                         </div>
                         <div class="text-center">
                             <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">Close</button>
@@ -157,28 +187,26 @@
 @section('js')
     <script type="text/javascript">
         function resetForm() {
-            $('#m_form_1_msg').hide();
-            $('#formAdd')[0].reset();
+            $('#formPemesanan')[0].reset();
         }
 
         function add_ajax() {
             method = 'add';
             resetForm();
-            $('#m_modal_6_title').html("Tambah User");
-            $('#m_form_1_msg').hide();
-            $('#m_modal_6').modal('show');
+            $('#modalPemesanan_title').html("Tambah Pemesanan");
+            $('#modalPemesanan').modal('show');
         }
 
         function save() {
             let url;
 
             if (method === 'add') {
-                url = "{{ route('user.store') }}";
+                url = "{{ route('pemesanan.store') }}";
             } else {
-                url = "{{ route('user.update') }}";
+                url = "{{ route('pemesanan.update') }}";
             }
 
-            const formData = new FormData($('#formAdd')[0]);
+            const formData = new FormData($('#formPemesanan')[0]);
             const csrfToken = $('meta[name="csrf-token"]').attr('content');
             formData.append('_token', csrfToken);
 
@@ -191,7 +219,7 @@
                 dataType: "json",
                 success: function(data) {
                     if (data.status) {
-                        $('#m_modal_6').modal('hide');
+                        $('#modalPemesanan').modal('hide');
                         Swal.fire({
                             text: "Data Berhasil Disimpan",
                             icon: "success",
@@ -219,22 +247,20 @@
         function edit(id) {
             method = 'edit';
             resetForm();
-            $('#m_modal_6_title').html("Edit User");
+            $('#modalPemesanan_title').html("Edit Fitur");
 
             $.ajax({
-                url: "{{ url('user/edit') }}/" + id,
+                url: "{{ url('pemesanan/edit') }}/" + id,
                 type: "GET",
                 dataType: "JSON",
                 success: function(data) {
                     if (data.data) {
-                        $('#formAdd')[0].reset();
+                        $('#formPemesanan')[0].reset();
                         $('[name="id"]').val(data.data.id);
-                        $('[name="nama"]').val(data.data.nama);
-                        $('[name="email"]').val(data.data.email);
-                        $('[name="username"]').val(data.data.username);
-                        $('[name="no_hp"]').val(data.data.no_hp);
-                        $('[name="alamat"]').val(data.data.alamat);
-                        $('#m_modal_6').modal('show');
+                        $('[name="user_id"]').val(data.data.user_id).change();
+                        $('[name="produk_id"]').val(data.data.produk_id).change();
+                        $('[name="jenis_pembayaran"]').val(data.data.jenis_pembayaran).change();
+                        $('#modalPemesanan').modal('show');
                     } else {
                         Swal.fire("Oops", "Gagal mengambil data!", "error");
                     }
@@ -264,7 +290,7 @@
             }).then(function(result) {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: "{{ url('user') }}/" + id,
+                        url: "{{ url('pemesanan') }}/" + id,
                         type: "DELETE",
                         data: {
                             _token: '{{ csrf_token() }}'

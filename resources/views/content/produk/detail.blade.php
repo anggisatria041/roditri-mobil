@@ -159,4 +159,51 @@
             </div>
         </div>
     </div>
+    <div class="card mb-5 mb-xl-8">
+        <div class="card-header border-0 pt-5">
+            <h3 class="card-title align-items-start flex-column">
+                <span class="card-label fw-bold fs-3 mb-1">Detail Cicilan</span>
+                <span class="text-muted mt-1 fw-semibold fs-7">Tenor</span>
+            </h3>
+
+        </div>
+        <div class="card-body py-3">
+            <div class="table-responsive">
+                <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
+                    <thead>
+                        <tr class="fw-bold text-muted">
+                            <th>Uang Muka (DP)</th>
+                            <th>Tenor 12 Bln</th>
+                            <th>Tenor 24 Bln</th>
+                            <th>Tenor 36 Bln</th>
+                            <th>Tenor 48 Bln</th>
+                            <th>Tenor 60 Bln</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                {{ isset($cicilan->dp) ? 'Rp ' . number_format($cicilan->dp, 0, ',', '.') : 'Rp 0' }}
+                            </td>
+                            <td>
+                                {{ isset($cicilan->tenor_12) ? 'Rp ' . number_format($cicilan->tenor_12, 0, ',', '.') : 'Rp 0' }}
+                            </td>
+                            <td>
+                                {{ isset($cicilan->tenor_24) ? 'Rp ' . number_format($cicilan->tenor_24, 0, ',', '.') : 'Rp 0' }}
+                            </td>
+                            <td>
+                                {{ isset($cicilan->tenor_36) ? 'Rp ' . number_format($cicilan->tenor_36, 0, ',', '.') : 'Rp 0' }}
+                            </td>
+                            <td>
+                                {{ isset($cicilan->tenor_48) ? 'Rp ' . number_format($cicilan->tenor_48, 0, ',', '.') : 'Rp 0' }}
+                            </td>
+                            <td>
+                                {{ isset($cicilan->tenor_60) ? 'Rp ' . number_format($cicilan->tenor_60, 0, ',', '.') : 'Rp 0' }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 @endsection

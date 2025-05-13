@@ -19,10 +19,10 @@
                             <a href="{{ route('tentang') }}" class="nav-link dropdown-toggle" role="button"
                                 aria-haspopup="true" aria-expanded="false">Tentang</a>
                         </li>
-                        <li class="nav-item {{ request()->routeIs(['produk', 'detail-produk']) ? 'active' : '' }}">
+                        {{-- <li class="nav-item {{ request()->routeIs(['produk', 'detail-produk']) ? 'active' : '' }}">
                             <a href="{{ route('produk') }}" class="nav-link dropdown-toggle" role="button"
                                 aria-haspopup="true" aria-expanded="false">Produk</a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item {{ request()->routeIs('pesanan') ? 'active' : '' }}">
                             <a href="{{ route('pesanan') }}" class="nav-link dropdown-toggle" role="button"
                                 aria-haspopup="true" aria-expanded="false">Pesanan</a>

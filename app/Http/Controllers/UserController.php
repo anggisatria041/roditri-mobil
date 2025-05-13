@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data = User::paginate(10);
+        $data = User::where('role', 'user')->paginate(10);
         return view('content.user.list', compact('data'));
     }
 
@@ -31,8 +31,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        if (User::where('email', $request->email)->exists()) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Email sudah pernah didaftarkan',
+            ]);
+        }
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
+            'email' => 'required',
             'no_hp' => 'required',
             'alamat' => 'required',
             'username' => 'required',
@@ -47,6 +54,7 @@ class UserController extends Controller
         }
         $data = User::create([
             'nama' => $request->nama,
+            'email' => $request->email,
             'no_hp' => $request->no_hp,
             'alamat' => $request->alamat,
             'username' => $request->username,
@@ -102,6 +110,7 @@ class UserController extends Controller
 
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
+            'email' => 'required',
             'no_hp' => 'required',
             'alamat' => 'required',
             'username' => 'required',
@@ -120,6 +129,7 @@ class UserController extends Controller
         }
         $data->update([
             'nama' => $request->nama,
+            'email' => $request->email,
             'no_hp' => $request->no_hp,
             'alamat' => $request->alamat,
             'username' => $request->username

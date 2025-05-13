@@ -7,6 +7,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FiturController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PemesananController;
+use App\Http\Controllers\VerifikasiStatus;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 
@@ -69,8 +71,23 @@ Route::middleware(['custom-auth'])->group(
             Route::get('/show/{id}', [ProdukController::class, 'show'])->name('produk.show');
         });
 
+        // Pemesanan
+        Route::prefix('pemesanan')->group(function () {
+            Route::get('/', [PemesananController::class, 'index'])->name('pemesanan.index');
+            Route::post('/store', [PemesananController::class, 'store'])->name('pemesanan.store');
+            Route::get('/edit/{id}', [PemesananController::class, 'edit'])->name('pemesanan.edit');
+            Route::post('/update', [PemesananController::class, 'update'])->name('pemesanan.update');
+            Route::delete('/{id}', [PemesananController::class, 'destroy'])->name('pemesanan.destroy');
+            Route::get('/show/{id}', [PemesananController::class, 'show'])->name('pemesanan.show');
+            Route::post('/bukti_pembayaran', [PemesananController::class, 'bukti_pembayaran'])->name('pemesanan.bukti_pembayaran');
+            Route::post('/pembayaran_cicilan', [PemesananController::class, 'pembayaran_cicilan'])->name('pemesanan.pembayaran_cicilan');
+        });
+
         // Logout
         Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+        // Verifikasi Status
+        Route::post('verifikasi-status', VerifikasiStatus::class);
     }
 );
 Route::post('/postlogin', [AuthController::class, 'postlogin'])->name('postlogin');

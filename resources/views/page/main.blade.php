@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Roditri - Mobil</title>
     <link rel="stylesheet" href="{{ asset('themes/css/linearicons.css') }}">
     <link rel="stylesheet" href="{{ asset('themes/css/font-awesome.min.css') }}">
@@ -23,9 +24,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-    body {
-        overflow-x: hidden;
-    }
+        body {
+            overflow-x: hidden;
+        }
     </style>
 </head>
 
@@ -42,13 +43,14 @@
     <script src="{{ asset('themes/js/jquery.nice-select.min.js') }}"></script>
     <script src="{{ asset('themes/js/jquery.sticky.js') }}"></script>
     <script src="{{ asset('themes/js/nouislider.min.js') }}"></script>
-    <script src="{{ asset('themes/js/countdown.js') }}"></script>
+    {{-- <script src="{{ asset('themes/js/countdown.js') }}"></script> --}}
     <script src="{{ asset('themes/js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('themes/js/owl.carousel.min.js') }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
     <script src="{{ asset('themes/js/gmaps.min.js') }}"></script>
     <script src="{{ asset('themes/js/main.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    @yield('js')
 </body>
 
 </html>

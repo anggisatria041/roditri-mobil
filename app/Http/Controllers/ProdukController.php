@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Fitur;
 use App\Models\Produk;
+use App\Models\Cicilan;
 use App\Models\FiturProduk;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Crypt;
@@ -41,14 +42,20 @@ class ProdukController extends Controller
             'nama' => 'required',
             'tahun' => 'required',
             'harga' => 'required',
-            'deskripsi' => 'required',
+            'dp' => 'required',
+            'tenor_12' => 'required',
+            'tenor_24' => 'required',
+            'tenor_36' => 'required',
+            'tenor_48' => 'required',
+            'tenor_60' => 'required',
             'warna' => 'required',
             'kapasitas_mesin' => 'required',
             'bahan_bakar' => 'required',
             'tipe' => 'required',
             'jumlah_muatan' => 'required',
             'masa_berlaku_stnk' => 'required',
-            'jarak_tempuh' => 'required'
+            'jarak_tempuh' => 'required',
+            'deskripsi' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -77,6 +84,16 @@ class ProdukController extends Controller
             'masa_berlaku_stnk' => $request->masa_berlaku_stnk,
             'jarak_tempuh' => $request->jarak_tempuh,
             'foto' => $gambar
+        ]);
+
+        Cicilan::create([
+            'produk_id' => $data->id,
+            'dp' => preg_replace('/[^0-9]/', '', $request->dp),
+            'tenor_12' => preg_replace('/[^0-9]/', '', $request->tenor_12),
+            'tenor_24' => preg_replace('/[^0-9]/', '', $request->tenor_24),
+            'tenor_36' => preg_replace('/[^0-9]/', '', $request->tenor_36),
+            'tenor_48' => preg_replace('/[^0-9]/', '', $request->tenor_48),
+            'tenor_60' => preg_replace('/[^0-9]/', '', $request->tenor_60)
         ]);
 
         $fitur_ids = $request->fitur_id;
@@ -112,7 +129,9 @@ class ProdukController extends Controller
         $fitur =  Fitur::leftJoin('fitur_produk as fp', 'fp.fitur_id', '=', 'fitur.id')
             ->select('fitur.*')
             ->where('fp.produk_id', $decryptedId)->get();
-        return view('content.produk.detail', compact('produk', 'fitur'));
+        $cicilan =  Cicilan::where('produk_id', $decryptedId)->first();
+
+        return view('content.produk.detail', compact('produk', 'fitur', 'cicilan'));
     }
 
     /**
@@ -123,10 +142,12 @@ class ProdukController extends Controller
         $data = Produk::findOrFail($id);
         $fiturProduk = FiturProduk::where('produk_id', $id)->pluck('fitur_id')->toArray();
         $allFitur = Fitur::all();
+        $cicilan = Cicilan::where('produk_id', $id)->first();
         return response()->json([
             'data' => $data,
             'fiturProduk' => $fiturProduk,
-            'allFitur' => $allFitur
+            'allFitur' => $allFitur,
+            'cicilan' => $cicilan,
         ], 200);
     }
 
@@ -137,6 +158,7 @@ class ProdukController extends Controller
     {
         $id = $request->id;
         $data = Produk::find($id);
+        $cicilan = Cicilan::where('produk_id', $id)->first();
 
         if (!$data) {
             return response()->json([
@@ -150,14 +172,20 @@ class ProdukController extends Controller
             'nama' => 'required',
             'tahun' => 'required',
             'harga' => 'required',
-            'deskripsi' => 'required',
+            'dp' => 'required',
+            'tenor_12' => 'required',
+            'tenor_24' => 'required',
+            'tenor_36' => 'required',
+            'tenor_48' => 'required',
+            'tenor_60' => 'required',
             'warna' => 'required',
             'kapasitas_mesin' => 'required',
             'bahan_bakar' => 'required',
             'tipe' => 'required',
             'jumlah_muatan' => 'required',
             'masa_berlaku_stnk' => 'required',
-            'jarak_tempuh' => 'required'
+            'jarak_tempuh' => 'required',
+            'deskripsi' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -179,6 +207,15 @@ class ProdukController extends Controller
             'jumlah_muatan' => $request->jumlah_muatan,
             'masa_berlaku_stnk' => $request->masa_berlaku_stnk,
             'jarak_tempuh' => $request->jarak_tempuh
+        ]);
+
+        $cicilan->update([
+            'dp' => preg_replace('/[^0-9]/', '', $request->dp),
+            'tenor_12' => preg_replace('/[^0-9]/', '', $request->tenor_12),
+            'tenor_24' => preg_replace('/[^0-9]/', '', $request->tenor_24),
+            'tenor_36' => preg_replace('/[^0-9]/', '', $request->tenor_36),
+            'tenor_48' => preg_replace('/[^0-9]/', '', $request->tenor_48),
+            'tenor_60' => preg_replace('/[^0-9]/', '', $request->tenor_60)
         ]);
 
         if ($request->hasFile('foto')) {
@@ -230,6 +267,7 @@ class ProdukController extends Controller
     public function destroy(string $id)
     {
         $data = Produk::find($id);
+        $cicilan = Cicilan::where('produk_id', $data->id)->first();
 
         if (empty($data)) {
             return response()->json([
@@ -238,6 +276,7 @@ class ProdukController extends Controller
             ], 404);
         }
 
+        $cicilan->delete();
         $data->delete();
         FiturProduk::where('produk_id', $id)->delete();
 
