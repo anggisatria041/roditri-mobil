@@ -18,10 +18,11 @@ class VerifikasiStatus extends Controller
         $idData   = $request->id;
         $verifikasi = $request->verifikasi;
 
-        if ($verifikasi == 'status_pembayaran') {
-            $data['status_pembayaran'] = $request->status;
-        } elseif ($verifikasi == 'status_pemesanan') {
+        if ($verifikasi == 'status_pemesanan') {
             $data['status_pemesanan'] = $request->status;
+            if ($request->status == 'Selesai') {
+                $data['status_pembayaran'] = 'Lunas';
+            }
         } else {
             $data['status'] = $request->status;
         }

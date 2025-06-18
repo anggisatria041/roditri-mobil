@@ -42,7 +42,6 @@ class ProdukController extends Controller
             'nama' => 'required',
             'tahun' => 'required',
             'harga' => 'required',
-            'dp' => 'required',
             'tenor_12' => 'required',
             'tenor_24' => 'required',
             'tenor_36' => 'required',
@@ -88,7 +87,6 @@ class ProdukController extends Controller
 
         Cicilan::create([
             'produk_id' => $data->id,
-            'dp' => preg_replace('/[^0-9]/', '', $request->dp),
             'tenor_12' => preg_replace('/[^0-9]/', '', $request->tenor_12),
             'tenor_24' => preg_replace('/[^0-9]/', '', $request->tenor_24),
             'tenor_36' => preg_replace('/[^0-9]/', '', $request->tenor_36),
@@ -172,7 +170,6 @@ class ProdukController extends Controller
             'nama' => 'required',
             'tahun' => 'required',
             'harga' => 'required',
-            'dp' => 'required',
             'tenor_12' => 'required',
             'tenor_24' => 'required',
             'tenor_36' => 'required',
@@ -210,7 +207,6 @@ class ProdukController extends Controller
         ]);
 
         $cicilan->update([
-            'dp' => preg_replace('/[^0-9]/', '', $request->dp),
             'tenor_12' => preg_replace('/[^0-9]/', '', $request->tenor_12),
             'tenor_24' => preg_replace('/[^0-9]/', '', $request->tenor_24),
             'tenor_36' => preg_replace('/[^0-9]/', '', $request->tenor_36),

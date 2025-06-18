@@ -172,7 +172,6 @@
                 <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
                     <thead>
                         <tr class="fw-bold text-muted">
-                            <th>Uang Muka (DP)</th>
                             <th>Tenor 12 Bln</th>
                             <th>Tenor 24 Bln</th>
                             <th>Tenor 36 Bln</th>
@@ -182,9 +181,6 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
-                                {{ isset($cicilan->dp) ? 'Rp ' . number_format($cicilan->dp, 0, ',', '.') : 'Rp 0' }}
-                            </td>
                             <td>
                                 {{ isset($cicilan->tenor_12) ? 'Rp ' . number_format($cicilan->tenor_12, 0, ',', '.') : 'Rp 0' }}
                             </td>

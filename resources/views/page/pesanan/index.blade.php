@@ -98,7 +98,9 @@
                                                     <a class="btn btn-danger btn-sm" href="#"
                                                         onclick="pembayaran('{{ $item->id }}')">Bayar</a>
                                                 @endif
-                                                @if ($item->jenis_pembayaran == 'kredit' && $item->status_pemesanan == 'Diterima')
+                                                @if (
+                                                    $item->jenis_pembayaran == 'kredit' &&
+                                                        ($item->status_pemesanan == 'Diterima' || $item->status_pemesanan == 'Selesai'))
                                                     <a class="btn btn-danger btn-sm"
                                                         href="{{ url('roditri-mobil/detail_cicilan/' . Crypt::encryptString($item->id)) }}">Detail</a>
                                                 @endif

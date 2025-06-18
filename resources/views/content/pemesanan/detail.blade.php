@@ -147,7 +147,7 @@
                     </div>
                 </div>
                 <div class="card-body p-9">
-                    <div class="row mb-7">
+                    {{-- <div class="row mb-7">
                         <label class="col-lg-4 fw-semibold text-muted">Status Pembayaran
                         </label>
                         <div class="col-lg-8">
@@ -169,39 +169,50 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row mb-7">
                         <label class="col-lg-4 fw-semibold text-muted">Status Pemesanan</label>
                         <div class="col-lg-8">
-                            <div class="dropdown">
-                                <button class="btn btn-sm btn-light dropdown-toggle" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Verifikasi
-                                </button>
-                                <ul class="dropdown-menu">
-                                    @if ($data->jenis_pembayaran == 'kredit')
-                                        <li><a class="dropdown-item btn-verifikasi" data-id="{{ $data->id }}"
-                                                data-status="Diterima" data-verifikasi="status_pemesanan"
-                                                data-model="Pemesanan">Diterima</a></li>
+                            @if ($data->status_pemesanan == 'Selesai')
+                                -
+                            @else
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-light dropdown-toggle" type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        Verifikasi
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        @if ($data->jenis_pembayaran == 'kredit' && $data->status_pemesanan != 'Diterima')
+                                            <li><a class="dropdown-item btn-verifikasi" data-id="{{ $data->id }}"
+                                                    data-status="Diterima" data-verifikasi="status_pemesanan"
+                                                    data-model="Pemesanan">Diterima</a></li>
+                                        @elseif($data->jenis_pembayaran == 'kredit' && $data->status_pemesanan == 'Diterima')
+                                            <li><a class="dropdown-item btn-verifikasi" data-id="{{ $data->id }}"
+                                                    data-status="Selesai" data-verifikasi="status_pemesanan"
+                                                    data-model="Pemesanan">Selesai</a>
+                                            </li>
+                                        @else
+                                            <li><a class="dropdown-item btn-verifikasi" data-id="{{ $data->id }}"
+                                                    data-status="Selesai" data-verifikasi="status_pemesanan"
+                                                    data-model="Pemesanan">Selesai</a>
+                                            </li>
+                                        @endif
                                         <li><a class="dropdown-item btn-verifikasi" data-id="{{ $data->id }}"
                                                 data-status="Ditolak" data-verifikasi="status_pemesanan"
                                                 data-model="Pemesanan">Ditolak</a>
                                         </li>
-                                    @else
-                                        <li><a class="dropdown-item btn-verifikasi" data-id="{{ $data->id }}"
-                                                data-status="Selesai" data-verifikasi="status_pemesanan"
-                                                data-model="Pemesanan">Selesai</a>
-                                        </li>
-                                    @endif
-                                </ul>
-                            </div>
+                                    </ul>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    @if ($data->jenis_pembayaran == 'kredit' && $data->status_pemesanan == 'Diterima')
+    @if (
+        $data->jenis_pembayaran == 'kredit' &&
+            ($data->status_pemesanan == 'Diterima' || $data->status_pemesanan == 'Selesai'))
         <div class="card mb-5 mb-xl-8">
             <div class="card-header border-0 pt-5">
                 <h3 class="card-title align-items-start flex-column">

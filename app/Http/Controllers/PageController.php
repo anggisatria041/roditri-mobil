@@ -55,7 +55,7 @@ class PageController extends Controller
     public function pesanan()
     {
         if (auth()->user() != null) {
-            $pemesanan = Pemesanan::where('user_id', Auth::user()->id)->get();
+            $pemesanan = Pemesanan::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
         } else {
             $pemesanan = '';
         }

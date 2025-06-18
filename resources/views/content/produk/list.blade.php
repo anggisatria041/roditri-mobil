@@ -156,35 +156,35 @@
                             </div>
                         </div>
                         <div class="row g-9 mb-8">
-                            <div class="col-md-6 fv-row">
+                            {{-- <div class="col-md-6 fv-row">
                                 <label class="required fs-6 fw-semibold mb-2">Uang Muka (DP)</label>
                                 <input type="text" class="form-control bg-transparent" placeholder="Rp" name="dp"
                                     oninput="formatRupiah(this)" />
-                            </div>
+                            </div> --}}
                             <div class="col-md-6 fv-row">
                                 <label class="required fs-6 fw-semibold mb-2">Tenor 12 Bulan</label>
-                                <input type="text" class="form-control bg-transparent" placeholder="Rp"
-                                    name="tenor_12" oninput="formatRupiah(this)" />
+                                <input type="text" class="form-control bg-transparent" placeholder="Rp" name="tenor_12"
+                                    oninput="formatRupiah(this)" />
                             </div>
-                        </div>
-                        <div class="row g-9 mb-8">
                             <div class="col-md-6 fv-row">
                                 <label class="required fs-6 fw-semibold mb-2">Tenor 24 Bulan</label>
                                 <input type="text" class="form-control bg-transparent" placeholder="Rp"
                                     name="tenor_24" oninput="formatRupiah(this)" />
                             </div>
+                        </div>
+                        <div class="row g-9 mb-8">
                             <div class="col-md-6 fv-row">
                                 <label class="required fs-6 fw-semibold mb-2">Tenor 36 Bulan</label>
                                 <input type="text" class="form-control bg-transparent" placeholder="Rp"
                                     name="tenor_36" oninput="formatRupiah(this)" />
                             </div>
-                        </div>
-                        <div class="row g-9 mb-8">
                             <div class="col-md-6 fv-row">
                                 <label class="required fs-6 fw-semibold mb-2">Tenor 48 Bulan</label>
                                 <input type="text" class="form-control bg-transparent" placeholder="Rp"
                                     name="tenor_48" oninput="formatRupiah(this)" />
                             </div>
+                        </div>
+                        <div class="row g-9 mb-8">
                             <div class="col-md-6 fv-row">
                                 <label class="required fs-6 fw-semibold mb-2">Tenor 60 Bulan</label>
                                 <input type="text" class="form-control bg-transparent" placeholder="Rp"

@@ -93,16 +93,16 @@
                                                 class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                 <i class="ki-outline ki-information fs-2 text-primary"></i>
                                             </a>
-                                            @if ($item->jenis_pembayaran == 'Tunai')
+                                            @if ($item->jenis_pembayaran == 'Tunai' && $item->status_pemesanan != 'Selesai')
                                                 <a href="javascript:void(0)" onclick="edit('{{ $item->id }}')"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                     <i class="ki-outline ki-pencil fs-2 text-info"></i>
                                                 </a>
+                                                <a href="javascript:void(0)" onclick="hapus('{{ $item->id }}')"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                                    <i class="ki-outline ki-trash fs-2 text-danger"></i>
+                                                </a>
                                             @endif
-                                            <a href="javascript:void(0)" onclick="hapus('{{ $item->id }}')"
-                                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
-                                                <i class="ki-outline ki-trash fs-2 text-danger"></i>
-                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach

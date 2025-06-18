@@ -17,7 +17,7 @@ class PemesananController extends Controller
      */
     public function index()
     {
-        $data = Pemesanan::paginate(10);
+        $data = Pemesanan::orderBy('id', 'desc')->paginate(10);
         $user = User::where('role', 'user')->get();
         $produk = Produk::all();
         return view('content.pemesanan.list', compact('data', 'user', 'produk'));
