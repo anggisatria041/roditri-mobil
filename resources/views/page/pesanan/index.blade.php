@@ -88,7 +88,9 @@
                                                     <h5 class="text-success">{{ $item->status_pemesanan }}</h5><br>
                                                     Download Bukti Kwitansi:
                                                     <a href="{{ url('pemesanan/kwitansi') . '/' . Crypt::encryptString($item->id) }}"
-                                                        class="btn btn-primary btn-sm">Download</a>
+                                                        class="btn btn-primary btn-sm" title="Download Kwitansi">
+                                                        <i class="fas fa-download"></i>
+                                                    </a>
                                                 @else
                                                     <h5 class="text-danger">{{ $item->status_pemesanan }}</h5>
                                                 @endif
