@@ -27,7 +27,7 @@
                 <div class="col-xxl-12 mb-md-5 mb-xl-10">
                     <div class="row g-5 g-xl-8">
                         <div class="col-xl-3">
-                            <a href="#" class="card bg-body hoverable card-xl-stretch mb-xl-8">
+                            <a href="{{ route('produk.index') }}" class="card bg-body hoverable card-xl-stretch mb-xl-8">
                                 <div class="card-body">
                                     <i class="ki-outline ki-chart-simple text-primary fs-2x ms-n1"></i>
                                     <div class="text-gray-900 fw-bold fs-2 mb-2 mt-5">Total: {{ $produk }}</div>
@@ -36,7 +36,7 @@
                             </a>
                         </div>
                         <div class="col-xl-3">
-                            <a href="#" class="card bg-dark hoverable card-xl-stretch mb-xl-8">
+                            <a href="{{ route('pemesanan.index') }}" class="card bg-dark hoverable card-xl-stretch mb-xl-8">
                                 <div class="card-body">
                                     <i class="ki-outline ki-cheque text-gray-100 fs-2x ms-n1"></i>
                                     <div class="text-gray-100 fw-bold fs-2 mb-2 mt-5">Total: {{ $pesanan }}</div>
@@ -45,7 +45,8 @@
                             </a>
                         </div>
                         <div class="col-xl-3">
-                            <a href="#" class="card bg-warning hoverable card-xl-stretch mb-xl-8">
+                            <a href="{{ route('pemesanan.index') }}"
+                                class="card bg-warning hoverable card-xl-stretch mb-xl-8">
                                 <div class="card-body">
                                     <i class="ki-outline ki-briefcase text-white fs-2x ms-n1"></i>
                                     <div class="text-white fw-bold fs-2 mb-2 mt-5">Total: {{ $pesanan_kredit }}</div>
@@ -54,7 +55,8 @@
                             </a>
                         </div>
                         <div class="col-xl-3">
-                            <a href="#" class="card bg-info hoverable card-xl-stretch mb-5 mb-xl-8">
+                            <a href="{{ route('pemesanan.index') }}"
+                                class="card bg-info hoverable card-xl-stretch mb-5 mb-xl-8">
                                 <div class="card-body">
                                     <i class="ki-outline ki-chart-pie-simple text-white fs-2x ms-n1"></i>
                                     <div class="text-white fw-bold fs-2 mb-2 mt-5">Total: {{ $pesanan_tunai }}</div>
