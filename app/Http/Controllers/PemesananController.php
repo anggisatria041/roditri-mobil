@@ -44,11 +44,11 @@ class PemesananController extends Controller
             ]);
         }
 
-        if ($request->hasFile('ktp')) {
-            $ktpPath = $request->file('ktp')->store('file_pendukung', 'public');
-            $ktp = $ktpPath;
+        if ($request->hasFile('bukti_pembayaran')) {
+            $pembayaranPath = $request->file('bukti_pembayaran')->store('file_pendukung', 'public');
+            $pembayaran = $pembayaranPath;
         } else {
-            $ktp = null;
+            $pembayaran = null;
         }
 
         if ($request->hasFile('slip_gaji')) {
@@ -66,7 +66,7 @@ class PemesananController extends Controller
             'status_pemesanan' => 'Proses',
             'tenor' => $request->tenor ?? null,
             'tanggal' => now(),
-            'ktp' => $ktp,
+            'bukti_pembayaran' => $pembayaran,
             'slip_gaji' => $slip_gaji,
         ]);
 
@@ -191,11 +191,11 @@ class PemesananController extends Controller
             'jenis_pembayaran' => $request->jenis_pembayaran,
         ]);
 
-        if ($request->hasFile('ktp')) {
-            $ktpPath = $request->file('ktp')->store('file_pendukung', 'public');
-            $ktp = $ktpPath;
+        if ($request->hasFile('bukti_pembayaran')) {
+            $pembayaranPath = $request->file('bukti_pembayaran')->store('file_pendukung', 'public');
+            $pembayaran = $pembayaranPath;
             $data->update([
-                'ktp' => $ktp
+                'bukti_pembayaran' => $pembayaran
             ]);
         }
 

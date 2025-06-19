@@ -93,7 +93,7 @@
                             <span class="fw-semibold fs-6 text-gray-800">{{ $data->tanggal }}</span>
                         </div>
                     </div>
-                    <div class="row mb-10">
+                    {{-- <div class="row mb-10">
                         <label class="col-lg-6 fw-semibold text-muted">KTP</label>
                         <div class="col-lg-6">
                             @if ($data->ktp)
@@ -103,7 +103,7 @@
                                 -
                             @endif
                         </div>
-                    </div>
+                    </div> --}}
                     @if ($data->jenis_pembayaran == 'Tunai')
                         <div class="row mb-10">
                             <label class="col-lg-6 fw-semibold text-muted">Bukti Pembayaran</label>

@@ -168,9 +168,9 @@
                         </div>
                         <div class="d-flex flex-column mb-8 fv-row">
                             <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                <span>KTP</span>
+                                <span>Bukti Pembayaran</span>
                             </label>
-                            <input type="file" class="form-control bg-transparent" name="ktp" />
+                            <input type="file" class="form-control bg-transparent" name="bukti_pembayaran" />
                         </div>
                         <div class="text-center">
                             <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">Close</button>
