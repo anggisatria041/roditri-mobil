@@ -25,50 +25,42 @@
                 <div class="page-heading">
                 </div>
                 <div class="col-xxl-12 mb-md-5 mb-xl-10">
-                    <div class="row g-5 g-xl-10">
-                        <div class="col-md-6 col-xl-6 mb-xxl-10">
-                            <div class="card overflow-hidden h-md-50 mb-5 mb-xl-10">
-                                <div class="card-body d-flex justify-content-between flex-column px-0 pb-0">
-                                    <div class="mb-4 px-9">
-                                        <div class="d-flex align-items-center mb-2">
-                                            <span class="fs-2hx fw-bold text-gray-800 me-2 lh-1">123</span>
-                                        </div>
-                                        <span class="fs-6 fw-semibold text-gray-500">Total Produk</span>
-                                    </div>
+                    <div class="row g-5 g-xl-8">
+                        <div class="col-xl-3">
+                            <a href="#" class="card bg-body hoverable card-xl-stretch mb-xl-8">
+                                <div class="card-body">
+                                    <i class="ki-outline ki-chart-simple text-primary fs-2x ms-n1"></i>
+                                    <div class="text-gray-900 fw-bold fs-2 mb-2 mt-5">Total: {{ $produk }}</div>
+                                    <div class="fw-semibold text-gray-400">Jumlah Produk</div>
                                 </div>
-                            </div>
-                            <div class="card card-flush h-md-50 mb-xl-10">
-                                <div class="card-header pt-5">
-                                    <div class="card-title d-flex flex-column">
-                                        <div class="d-flex align-items-center">
-                                            <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">2324</span>
-                                        </div>
-                                        <span class="text-gray-500 pt-1 fw-semibold fs-6">Total Pesanan</span>
-                                    </div>
-                                </div>
-                            </div>
+                            </a>
                         </div>
-                        <div class="col-md-6 col-xl-6 mb-xxl-10">
-                            <div class="card overflow-hidden h-md-50 mb-5 mb-xl-10">
-                                <div class="card-body d-flex justify-content-between flex-column px-0 pb-0">
-                                    <div class="mb-4 px-9">
-                                        <div class="d-flex align-items-center mb-2">
-                                            <span class="fs-2hx fw-bold text-gray-800 me-2 lh-1">2323</span>
-                                        </div>
-                                        <span class="fs-6 fw-semibold text-gray-500">Total Penjualan</span>
-                                    </div>
+                        <div class="col-xl-3">
+                            <a href="#" class="card bg-dark hoverable card-xl-stretch mb-xl-8">
+                                <div class="card-body">
+                                    <i class="ki-outline ki-cheque text-gray-100 fs-2x ms-n1"></i>
+                                    <div class="text-gray-100 fw-bold fs-2 mb-2 mt-5">Total: {{ $pesanan }}</div>
+                                    <div class="fw-semibold text-gray-100">Jumlah Pemesanan</div>
                                 </div>
-                            </div>
-                            <div class="card overflow-hidden h-md-50 mb-5 mb-xl-10">
-                                <div class="card-body d-flex justify-content-between flex-column px-0 pb-0">
-                                    <div class="mb-4 px-9">
-                                        <div class="d-flex align-items-center mb-2">
-                                            <span class="fs-2hx fw-bold text-gray-800 me-2 lh-1">2323</span>
-                                        </div>
-                                        <span class="fs-6 fw-semibold text-gray-500">Total User</span>
-                                    </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-3">
+                            <a href="#" class="card bg-warning hoverable card-xl-stretch mb-xl-8">
+                                <div class="card-body">
+                                    <i class="ki-outline ki-briefcase text-white fs-2x ms-n1"></i>
+                                    <div class="text-white fw-bold fs-2 mb-2 mt-5">Total: {{ $pesanan_kredit }}</div>
+                                    <div class="fw-semibold text-white">Jumlah Pemesanan Kredit</div>
                                 </div>
-                            </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-3">
+                            <a href="#" class="card bg-info hoverable card-xl-stretch mb-5 mb-xl-8">
+                                <div class="card-body">
+                                    <i class="ki-outline ki-chart-pie-simple text-white fs-2x ms-n1"></i>
+                                    <div class="text-white fw-bold fs-2 mb-2 mt-5">Total: {{ $pesanan_tunai }}</div>
+                                    <div class="fw-semibold text-white">Jumlah Pemesanan Tunai</div>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>

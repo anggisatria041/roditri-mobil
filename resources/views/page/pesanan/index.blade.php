@@ -85,7 +85,10 @@
                                                 @elseif($item->status_pemesanan == 'Diterima')
                                                     <h5 class="text-success">{{ $item->status_pemesanan }}</h5>
                                                 @elseif($item->status_pemesanan == 'Selesai')
-                                                    <h5 class="text-success">{{ $item->status_pemesanan }}</h5>
+                                                    <h5 class="text-success">{{ $item->status_pemesanan }}</h5><br>
+                                                    Download Bukti Kwitansi:
+                                                    <a href="{{ url('pemesanan/kwitansi') . '/' . Crypt::encryptString($item->id) }}"
+                                                        class="btn btn-primary btn-sm">Download</a>
                                                 @else
                                                     <h5 class="text-danger">{{ $item->status_pemesanan }}</h5>
                                                 @endif

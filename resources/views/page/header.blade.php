@@ -2,7 +2,7 @@
     <div class="main_menu">
         <nav class="navbar navbar-expand-lg navbar-light main_box">
             <div class="container">
-                <a class="navbar-brand logo_h" href="{{ route('home') }}"><img src="{{ asset('themes/img/logo-new.png') }}"
+                <a class="navbar-brand logo_h" href="{{ route('home') }}"><img src="{{ asset('themes/img/logo/logo-new.png') }}"
                         alt="">
                     <b>RODITRI MOBIL</b></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"

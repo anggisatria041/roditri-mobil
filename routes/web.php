@@ -81,6 +81,7 @@ Route::middleware(['custom-auth'])->group(
             Route::get('/show/{id}', [PemesananController::class, 'show'])->name('pemesanan.show');
             Route::post('/bukti_pembayaran', [PemesananController::class, 'bukti_pembayaran'])->name('pemesanan.bukti_pembayaran');
             Route::post('/pembayaran_cicilan', [PemesananController::class, 'pembayaran_cicilan'])->name('pemesanan.pembayaran_cicilan');
+            Route::get('/kwitansi/{id}', [PemesananController::class, 'kwitansi'])->name('pemesanan.kwitansi');
         });
 
         // Logout

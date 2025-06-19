@@ -9,6 +9,7 @@ use App\Models\Produk;
 use App\Models\PembayaranCicilan;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Crypt;
+use PDF;
 
 class PemesananController extends Controller
 {
@@ -231,5 +232,12 @@ class PemesananController extends Controller
             'status' => true,
             'message' => 'Berhasil Menghapus Data',
         ]);
+    }
+    public function kwitansi(string $id)
+    {
+        $decryptedId = Crypt::decryptString($id);
+        $data = Pemesanan::findOrFail($decryptedId);
+        $pdf = PDF::loadview('page.pesanan.kwitansi', compact('data'));
+        return $pdf->stream();
     }
 }
