@@ -9,6 +9,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\VerifikasiStatus;
+use App\Http\Controllers\LaporanPenjualanController;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 
@@ -82,6 +83,12 @@ Route::middleware(['custom-auth'])->group(
             Route::post('/bukti_pembayaran', [PemesananController::class, 'bukti_pembayaran'])->name('pemesanan.bukti_pembayaran');
             Route::post('/pembayaran_cicilan', [PemesananController::class, 'pembayaran_cicilan'])->name('pemesanan.pembayaran_cicilan');
             Route::get('/kwitansi/{id}', [PemesananController::class, 'kwitansi'])->name('pemesanan.kwitansi');
+        });
+
+        // Laporan Penjualan
+        Route::prefix('laporan_penjualan')->group(function () {
+            Route::get('/', [LaporanPenjualanController::class, 'index'])->name('laporan_penjualan.index');
+            Route::post('/data', [LaporanPenjualanController::class, 'data'])->name('laporan_penjualan-list');
         });
 
         // Logout

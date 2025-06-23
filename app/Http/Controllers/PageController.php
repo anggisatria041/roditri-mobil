@@ -16,7 +16,7 @@ class PageController extends Controller
     public function home()
     {
         $produk = Produk::all();
-        if (auth()->user() != null && Auth::user()->role == 'admin') {
+        if (auth()->user() != null && (Auth::user()->role == 'admin' || Auth::user()->role == 'owner')) {
             return redirect('dashboard');
         } elseif (auth()->user() != null && Auth::user()->role == 'user') {
             return view('page.home.index', compact('produk'));

@@ -25,6 +25,15 @@
                 </div>
             </div>
             <div class="menu-item">
+                <a class="menu-link {{ request()->routeIs('laporan_penjualan.*') ? 'active' : '' }}"
+                    href="{{ route('laporan_penjualan.index') }}">
+                    <span class="menu-icon">
+                        <i class="ki-outline ki-abstract-41 fs-2"></i>
+                    </span>
+                    <span class="menu-title">Laporan Penjualan</span>
+                </a>
+            </div>
+            <div class="menu-item">
                 <a class="menu-link {{ request()->routeIs('produk.*') ? 'active' : '' }}"
                     href="{{ route('produk.index') }}">
                     <span class="menu-icon">
