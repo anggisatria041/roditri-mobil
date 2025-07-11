@@ -27,7 +27,7 @@
                         <img class="img-fluid" img src="{{ Storage::url($produk->foto) }}" alt="">
                     </div>
                     <div class="single-prd-item">
-                        <iframe src="https://koala360.com/tour?id=36599"
+                        <iframe src="https://koala360.com/tour?id=36600"
                             style="border:none;"
                             class="my360Tour"
                             name="my360Tour"
