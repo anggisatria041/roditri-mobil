@@ -125,7 +125,7 @@
                     <div class="card-body d-flex justify-content-center align-items-center">
                         <div class="text-center" style="width: 100%;">
                             <div class="position-relative">
-                                <img src="{{ Storage::url($produk->foto) }}" alt="image" class="img-fluid rounded" />
+                                <img src="{{ Storage::url($produk->foto1) }}" alt="image" class="img-fluid rounded" />
                             </div>
                         </div>
                     </div>

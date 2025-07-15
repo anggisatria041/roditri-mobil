@@ -21,10 +21,16 @@
             <div class="col-lg-6">
                 <div class="s_Product_carousel">
                     <div class="single-prd-item">
-                        <img class="img-fluid" img src="{{ Storage::url($produk->foto) }}" alt="">
+                        <img class="img-fluid" img src="{{ Storage::url($produk->foto1) }}" alt="">
                     </div>
                     <div class="single-prd-item">
-                        <img class="img-fluid" img src="{{ Storage::url($produk->foto) }}" alt="">
+                        <img class="img-fluid" img src="{{ Storage::url($produk->foto2) }}" alt="">
+                    </div>
+                    <div class="single-prd-item">
+                        <img class="img-fluid" img src="{{ Storage::url($produk->foto3) }}" alt="">
+                    </div>
+                    <div class="single-prd-item">
+                        <img class="img-fluid" img src="{{ Storage::url($produk->foto4) }}" alt="">
                     </div>
                     <div class="single-prd-item">
                         @if($produk->tour_id)

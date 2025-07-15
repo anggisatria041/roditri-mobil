@@ -25,7 +25,10 @@ return new class extends Migration
             $table->string('masa_berlaku_stnk');
             $table->integer('jarak_tempuh');
             $table->string('tour_id');
-            $table->string('foto');
+            $table->string('foto1')->nullable(); // foto tambahan
+            $table->string('foto2')->nullable();
+            $table->string('foto3')->nullable();
+            $table->string('foto4')->nullable();
             $table->timestamps();
         });
     }

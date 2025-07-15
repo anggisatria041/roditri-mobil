@@ -297,16 +297,34 @@
                     </div>
                     <div class="d-flex flex-column mb-8 fv-row">
                         <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                            <span class="required">Tour ID</span>
+                            <span>Tour ID</span>
                         </label>
                         <input type="number" class="form-control bg-transparent" placeholder="Masukkan Tour ID"
                             name="tour_id" />
                     </div>
                     <div class="d-flex flex-column mb-8 fv-row">
                         <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                            <span class="required">Foto</span>
+                            <span class="required">Foto 1</span>
                         </label>
-                        <input type="file" class="form-control bg-transparent" name="foto" />
+                        <input type="file" class="form-control bg-transparent" name="foto1" />
+                    </div>
+                    <div class="d-flex flex-column mb-8 fv-row">
+                        <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                            <span class="required">Foto 2</span>
+                        </label>
+                        <input type="file" class="form-control bg-transparent" name="foto2" />
+                    </div>
+                    <div class="d-flex flex-column mb-8 fv-row">
+                        <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                            <span class="required">Foto 3</span>
+                        </label>
+                        <input type="file" class="form-control bg-transparent" name="foto3" />
+                    </div>
+                    <div class="d-flex flex-column mb-8 fv-row">
+                        <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                            <span class="required">Foto 4</span>
+                        </label>
+                        <input type="file" class="form-control bg-transparent" name="foto4" />
                     </div>
                     <div class="text-center">
                         <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">Close</button>

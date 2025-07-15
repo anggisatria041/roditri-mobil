@@ -56,6 +56,10 @@ class ProdukController extends Controller
             'jarak_tempuh' => 'required',
             'deskripsi' => 'required',
             'tour_id' => 'required',
+            'foto1' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'foto2' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'foto3' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'foto4' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -64,12 +68,12 @@ class ProdukController extends Controller
                 'message' => $validator->errors()->first(),
             ]);
         }
-        if ($request->hasFile('foto')) {
-            $gambarPath = $request->file('foto')->store('foto_produk', 'public');
-            $gambar = $gambarPath;
-        } else {
-            $gambar = null;
-        }
+
+        // Upload semua foto
+        $foto1 = $request->hasFile('foto1') ? $request->file('foto1')->store('foto_produk', 'public') : null;
+        $foto2 = $request->hasFile('foto2') ? $request->file('foto2')->store('foto_produk', 'public') : null;
+        $foto3 = $request->hasFile('foto3') ? $request->file('foto3')->store('foto_produk', 'public') : null;
+        $foto4 = $request->hasFile('foto4') ? $request->file('foto4')->store('foto_produk', 'public') : null;
 
         $data = Produk::create([
             'nama' => $request->nama,
@@ -84,40 +88,36 @@ class ProdukController extends Controller
             'masa_berlaku_stnk' => $request->masa_berlaku_stnk,
             'jarak_tempuh' => $request->jarak_tempuh,
             'tour_id' => $request->tour_id,
-            'foto' => $gambar
+            'foto1' => $foto1,
+            'foto2' => $foto2,
+            'foto3' => $foto3,
+            'foto4' => $foto4,
         ]);
 
+        // Simpan cicilan
         Cicilan::create([
             'produk_id' => $data->id,
             'tenor_12' => preg_replace('/[^0-9]/', '', $request->tenor_12),
             'tenor_24' => preg_replace('/[^0-9]/', '', $request->tenor_24),
             'tenor_36' => preg_replace('/[^0-9]/', '', $request->tenor_36),
             'tenor_48' => preg_replace('/[^0-9]/', '', $request->tenor_48),
-            'tenor_60' => preg_replace('/[^0-9]/', '', $request->tenor_60)
+            'tenor_60' => preg_replace('/[^0-9]/', '', $request->tenor_60),
         ]);
 
-        $fitur_ids = $request->fitur_id;
-        $produk = $data;
-
-        foreach ($fitur_ids as $f_id) {
+        // Simpan fitur produk
+        foreach ($request->fitur_id as $f_id) {
             FiturProduk::create([
                 'fitur_id' => $f_id,
-                'produk_id' => $produk->id
+                'produk_id' => $data->id,
             ]);
         }
 
-        if ($data) {
-            return response()->json([
-                'status' => true,
-                'message' => 'Berhasil Menyimpan Data',
-            ]);
-        } else {
-            return response()->json([
-                'status' => false,
-                'message' => 'Gagal Menyimpan Data',
-            ]);
-        }
+        return response()->json([
+            'status' => $data ? true : false,
+            'message' => $data ? 'Berhasil Menyimpan Data' : 'Gagal Menyimpan Data',
+        ]);
     }
+
 
     /**
      * Display the specified resource.
@@ -163,10 +163,9 @@ class ProdukController extends Controller
         if (!$data) {
             return response()->json([
                 'status' => false,
-                'message' => 'Data User tidak ditemukan',
+                'message' => 'Data produk tidak ditemukan',
             ]);
         }
-
 
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
@@ -185,7 +184,7 @@ class ProdukController extends Controller
             'masa_berlaku_stnk' => 'required',
             'jarak_tempuh' => 'required',
             'deskripsi' => 'required',
-            'tour_id' => 'required'
+            'tour_id' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -195,6 +194,7 @@ class ProdukController extends Controller
             ]);
         }
 
+        // Update data produk
         $data->update([
             'nama' => $request->nama,
             'tahun' => $request->tahun,
@@ -207,58 +207,49 @@ class ProdukController extends Controller
             'jumlah_muatan' => $request->jumlah_muatan,
             'masa_berlaku_stnk' => $request->masa_berlaku_stnk,
             'jarak_tempuh' => $request->jarak_tempuh,
-            'tour_id' => $request->tour_id
+            'tour_id' => $request->tour_id,
         ]);
 
+        // Update cicilan
         $cicilan->update([
             'tenor_12' => preg_replace('/[^0-9]/', '', $request->tenor_12),
             'tenor_24' => preg_replace('/[^0-9]/', '', $request->tenor_24),
             'tenor_36' => preg_replace('/[^0-9]/', '', $request->tenor_36),
             'tenor_48' => preg_replace('/[^0-9]/', '', $request->tenor_48),
-            'tenor_60' => preg_replace('/[^0-9]/', '', $request->tenor_60)
+            'tenor_60' => preg_replace('/[^0-9]/', '', $request->tenor_60),
         ]);
 
-        if ($request->hasFile('foto')) {
-            $gambarPath = $request->file('foto')->store('foto_produk', 'public');
-            $foto = $gambarPath;
-            $data->update([
-                'foto' => $foto
-            ]);
-        }
+        // Update foto utama & foto tambahan
+        $fotoFields = ['foto1', 'foto2', 'foto3', 'foto4'];
 
-        $fitur_ids = $request->fitur_id ?? [];
-
-        $existingFitur = FiturProduk::where('produk_id', $id)
-            ->pluck('fitur_id')
-            ->toArray();
-
-        $fiturToDelete = array_diff($existingFitur, $fitur_ids);
-        if (!empty($fiturToDelete)) {
-            FiturProduk::where('produk_id', $id)
-                ->whereIn('fitur_id', $fiturToDelete)
-                ->delete();
-        }
-        $fiturToAdd = array_diff($fitur_ids, $existingFitur);
-        if (!empty($fiturToAdd)) {
-            foreach ($fiturToAdd as $fitur) {
-                FiturProduk::create([
-                    'produk_id' => $id,
-                    'fitur_id' => $fitur
-                ]);
+        foreach ($fotoFields as $field) {
+            if ($request->hasFile($field)) {
+                $path = $request->file($field)->store('foto_produk', 'public');
+                $data->update([$field => $path]);
             }
         }
 
-        if ($data) {
-            return response()->json([
-                'status' => true,
-                'message' => 'Berhasil Menyimpan Data',
-            ]);
-        } else {
-            return response()->json([
-                'status' => false,
-                'message' => 'Gagal Menyimpan Data',
+        // Update fitur produk
+        $fitur_ids = $request->fitur_id ?? [];
+        $existingFitur = FiturProduk::where('produk_id', $id)->pluck('fitur_id')->toArray();
+
+        $fiturToDelete = array_diff($existingFitur, $fitur_ids);
+        if (!empty($fiturToDelete)) {
+            FiturProduk::where('produk_id', $id)->whereIn('fitur_id', $fiturToDelete)->delete();
+        }
+
+        $fiturToAdd = array_diff($fitur_ids, $existingFitur);
+        foreach ($fiturToAdd as $fitur) {
+            FiturProduk::create([
+                'produk_id' => $id,
+                'fitur_id' => $fitur,
             ]);
         }
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Berhasil Menyimpan Data',
+        ]);
     }
 
     /**
