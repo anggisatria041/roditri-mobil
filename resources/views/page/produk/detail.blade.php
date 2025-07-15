@@ -28,14 +28,14 @@
                     </div>
                     <div class="single-prd-item">
                         @if($produk->tour_id)
-                            <iframe src="https://koala360.com/tour?id={{ $produk->tour_id }}&preview=true"
-                                    width="100%"
-                                    height="500"
-                                    frameborder="0"
-                                    allowfullscreen>
-                            </iframe>
+                        <iframe src="https://koala360.com/tour?id={{ $produk->tour_id }}&preview=true"
+                            width="100%"
+                            height="500"
+                            frameborder="0"
+                            allowfullscreen>
+                        </iframe>
                         @else
-                            <p>Tidak ada preview 360° untuk produk ini.</p>
+                        <p>Tidak ada preview 360° untuk produk ini.</p>
                         @endif
                     </div>
                 </div>
@@ -50,17 +50,17 @@
                     </ul>
                     <p>{{ $produk->deskripsi }}</p>
 
-                        <div class="card_area d-flex align-items-center">
-                            <a class="btn btn-success mr-3"
-                                href="https://wa.me/6285158965322?text=Halo%20saya%20ingin%20bertanya%20tentang%20mobil"
-                                target="_blank">WhatsApp</a>
-                            <a class="btn btn-danger" href="#" onclick="add_cicilan()">Cicilan</a>
-                        </div>
+                    <div class="card_area d-flex align-items-center">
+                        <a class="btn btn-success mr-3"
+                            href="https://wa.me/6285158965322?text=Halo%20saya%20ingin%20bertanya%20tentang%20mobil"
+                            target="_blank">WhatsApp</a>
+                        <a class="btn btn-danger" href="#" onclick="add_cicilan()">Cicilan</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 <section class="product_description_area">
     <div class="container">
@@ -228,7 +228,7 @@
     }
 
     function add_cicilan() {
-        if (!@json(auth()->check())) {
+        if (!@json(auth() - > check())) {
             window.location.href = "{{ route('login') }}";
         } else {
             resetForm();
