@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('jumlah_muatan');
             $table->string('masa_berlaku_stnk');
             $table->integer('jarak_tempuh');
+            $table->string('tour_id');
             $table->string('foto');
             $table->timestamps();
         });

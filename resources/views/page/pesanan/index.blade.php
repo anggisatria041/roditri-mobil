@@ -138,7 +138,7 @@
                 <div class="row features-inner">
                     <div class="col-lg-12 col-md-6 col-sm-6">
                         <div class="single-features">
-                            <h6>Silahkan login terlabih dahulu untuk melihat riwayat pesanan anda</h6>
+                            <h6>Silahkan <a href="{{ route('login') }}" style="text-decoration: none; color: red;"> login </a>terlebih dahulu untuk melihat riwayat pesanan anda</h6>
                             <p>Terima Kasih!</p>
                         </div>
                     </div>

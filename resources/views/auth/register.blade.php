@@ -66,55 +66,55 @@
                                 <h1 class="text-gray-900 fw-bolder mb-3">Registrasi</h1>
                             </div>
                             @if (session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
                             @endif
                             @if (session('error'))
-                                <div class="alert alert-danger mt-3" role="alert">
-                                    {{ session('error') }}
-                                </div>
+                            <div class="alert alert-danger mt-3" role="alert">
+                                {{ session('error') }}
+                            </div>
                             @endif
                             <div class="fv-row mb-3">
                                 <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
                                     <span class="required">Nama Lengkap</span>
                                 </label>
                                 <input type="text" placeholder="Nama Lengkap" name="nama" autocomplete="off"
-                                    class="form-control bg-transparent" />
+                                    class="form-control bg-transparent" required />
                             </div>
                             <div class="fv-row mb-3">
                                 <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
                                     <span class="required">Email</span>
                                 </label>
                                 <input type="email" placeholder="Email" name="email" autocomplete="off"
-                                    class="form-control bg-transparent" />
+                                    class="form-control bg-transparent" required />
                             </div>
                             <div class="fv-row mb-3">
                                 <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
                                     <span class="required">Username</span>
                                 </label>
                                 <input type="text" placeholder="Username" name="username" autocomplete="off"
-                                    class="form-control bg-transparent" />
+                                    class="form-control bg-transparent" required />
                             </div>
                             <div class="fv-row mb-3">
                                 <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
                                     <span class="required">Password</span>
                                 </label>
                                 <input type="password" placeholder="Password" name="password" autocomplete="off"
-                                    class="form-control bg-transparent" />
+                                    class="form-control bg-transparent" required />
                             </div>
                             <div class="fv-row mb-3">
                                 <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
                                     <span class="required">Alamat</span>
                                 </label>
-                                <textarea name="alamat" placeholder="Alamat" autocomplete="off" class="form-control bg-transparent"></textarea>
+                                <textarea name="alamat" placeholder="Alamat" autocomplete="off" class="form-control bg-transparent" required></textarea>
                             </div>
                             <div class="fv-row mb-3">
                                 <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
                                     <span class="required">No Hp</span>
                                 </label>
                                 <input type="number" placeholder="No Hp" name="no_hp" autocomplete="off"
-                                    class="form-control bg-transparent" />
+                                    class="form-control bg-transparent" required />
                             </div>
                             <div class="d-grid mb-10">
                                 <button type="submit" class="btn text-white" style="background-color: #D84040">

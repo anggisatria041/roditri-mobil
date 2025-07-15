@@ -70,34 +70,35 @@
                                     </a>
                                 </div>
                             </div>
+                            @csrf
                             <div class="text-center mb-11">
-                                <h1 class="text-gray-900 fw-bolder mb-3">Sign In</h1>
+                                <h1 class="text-gray-900 fw-bolder mb-3">Masuk</h1>
                             </div>
                             @if (session('success'))
-                                <div class="alert alert-info">
-                                    {{ session('success') }}
-                                </div>
+                            <div class="alert alert-info">
+                                {{ session('success') }}
+                            </div>
                             @endif
                             @if (session('error'))
-                                <div class="alert alert-danger mt-3" role="alert">
-                                    {{ session('error') }}
-                                </div>
+                            <div class="alert alert-danger mt-3" role="alert">
+                                {{ session('error') }}
+                            </div>
                             @endif
-                            <div class="fv-row mb-8">
-                                <input type="text" placeholder="Username" name="username" autocomplete="off"
-                                    class="form-control bg-transparent" />
+                            <div class="fv-row mb-4">
+                                <label class="form-label fw-semibold text-dark">Username</label>
+                                <input type="text" name="username" autocomplete="off"
+                                    class="form-control form-control-lg bg-white border rounded required" placeholder="Masukkan username" required />
                             </div>
-                            <div class="fv-row mb-8">
-                                <input type="password" placeholder="Password" name="password" autocomplete="off"
-                                    class="form-control bg-transparent" />
+
+                            <div class="fv-row mb-4">
+                                <label class="form-label fw-semibold text-dark">Password</label>
+                                <input type="password" name="password" autocomplete="off"
+                                    class="form-control form-control-lg bg-white border rounded required" placeholder="Masukkan password" required />
                             </div>
+
                             <div class="d-grid mb-10">
-                                <button type="submit" id="kt_sign_in_submit" class="btn text-white"
-                                    style="background-color: #D84040">
+                                <button type="submit" id="kt_sign_in_submit" class="btn text-white" style="background-color: #D84040">
                                     <span class="indicator-label">Masuk</span>
-                                    <span class="indicator-progress">Please wait...
-                                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                                </button>
                             </div>
                             <div class="text-gray-500 text-center fw-semibold fs-6">Belum punya akun?
                                 <a href="{{ url('register') }}" style="color:#D84040">Daftar</a>

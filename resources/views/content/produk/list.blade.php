@@ -48,6 +48,7 @@
                             <th>Kapasitas Mesin</th>
                             <th>Bahan Bakar</th>
                             <th>Tipe</th>
+                            <th>Tour ID</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -82,6 +83,7 @@
                             <td>{{ $item->kapasitas_mesin }}</td>
                             <td>{{ $item->bahan_bakar }}</td>
                             <td>{{ $item->tipe }}</td>
+                            <td>{{ $item->tour_id }}</td>
                             <td>
                                 <a href="{{ url('produk/show/' . Crypt::encryptString($item->id)) }}"
                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
@@ -295,6 +297,13 @@
                     </div>
                     <div class="d-flex flex-column mb-8 fv-row">
                         <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                            <span class="required">Tour ID</span>
+                        </label>
+                        <input type="number" class="form-control bg-transparent" placeholder="Masukkan Tour ID"
+                            name="tour_id" />
+                    </div>
+                    <div class="d-flex flex-column mb-8 fv-row">
+                        <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
                             <span class="required">Foto</span>
                         </label>
                         <input type="file" class="form-control bg-transparent" name="foto" />
@@ -402,6 +411,7 @@
                     $('[name="masa_berlaku_stnk"]').val(data.data.masa_berlaku_stnk);
                     $('[name="jarak_tempuh"]').val(data.data.jarak_tempuh);
                     $('[name="deskripsi"]').val(data.data.deskripsi);
+                    $('[name="tour_id"]').val(data.data.tour_id);
                     $('[name="warna"]').each(function() {
                         if ($(this).val() === data.data.warna) {
                             $(this).prop('checked', true);
@@ -483,11 +493,10 @@
     }
 
     function formatRupiahValue(value) {
-    if (typeof value !== 'number' && typeof value !== 'string') return "0";
-    value = String(value).replace(/[^0-9]/g, '');
-    if (value === "") return "0";
-    return value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        if (typeof value !== 'number' && typeof value !== 'string') return "0";
+        value = String(value).replace(/[^0-9]/g, '');
+        if (value === "") return "0";
+        return value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
-
 </script>
 @endsection

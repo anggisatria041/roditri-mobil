@@ -55,6 +55,7 @@ class ProdukController extends Controller
             'masa_berlaku_stnk' => 'required',
             'jarak_tempuh' => 'required',
             'deskripsi' => 'required',
+            'tour_id' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -63,7 +64,7 @@ class ProdukController extends Controller
                 'message' => $validator->errors()->first(),
             ]);
         }
-         if ($request->hasFile('foto')) {
+        if ($request->hasFile('foto')) {
             $gambarPath = $request->file('foto')->store('foto_produk', 'public');
             $gambar = $gambarPath;
         } else {
@@ -82,6 +83,7 @@ class ProdukController extends Controller
             'jumlah_muatan' => $request->jumlah_muatan,
             'masa_berlaku_stnk' => $request->masa_berlaku_stnk,
             'jarak_tempuh' => $request->jarak_tempuh,
+            'tour_id' => $request->tour_id,
             'foto' => $gambar
         ]);
 
@@ -182,7 +184,8 @@ class ProdukController extends Controller
             'jumlah_muatan' => 'required',
             'masa_berlaku_stnk' => 'required',
             'jarak_tempuh' => 'required',
-            'deskripsi' => 'required'
+            'deskripsi' => 'required',
+            'tour_id' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -203,7 +206,8 @@ class ProdukController extends Controller
             'tipe' => $request->tipe,
             'jumlah_muatan' => $request->jumlah_muatan,
             'masa_berlaku_stnk' => $request->masa_berlaku_stnk,
-            'jarak_tempuh' => $request->jarak_tempuh
+            'jarak_tempuh' => $request->jarak_tempuh,
+            'tour_id' => $request->tour_id
         ]);
 
         $cicilan->update([
@@ -214,7 +218,7 @@ class ProdukController extends Controller
             'tenor_60' => preg_replace('/[^0-9]/', '', $request->tenor_60)
         ]);
 
-         if ($request->hasFile('foto')) {
+        if ($request->hasFile('foto')) {
             $gambarPath = $request->file('foto')->store('foto_produk', 'public');
             $foto = $gambarPath;
             $data->update([

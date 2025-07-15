@@ -27,19 +27,16 @@
                         <img class="img-fluid" img src="{{ Storage::url($produk->foto) }}" alt="">
                     </div>
                     <div class="single-prd-item">
-                        <iframe src="https://koala360.com/tour?id=36599"
-                            style="border:none;"
-                            class="my360Tour"
-                            name="my360Tour"
-                            scrolling="no"
-                            allow="vr; xr; accelerometer; magnetometer; gyroscope; webvr; webxr;"
-                            frameborder="0"
-                            height="400px"
-                            width="100%" {{-- agar responsif --}}
-                            allowfullscreen
-                            webkitallowfullscreen="true"
-                            mozallowfullscreen="true">
-                        </iframe>
+                        @if($produk->tour_id)
+                            <iframe src="https://koala360.com/tour?id={{ $produk->tour_id }}&preview=true"
+                                    width="100%"
+                                    height="500"
+                                    frameborder="0"
+                                    allowfullscreen>
+                            </iframe>
+                        @else
+                            <p>Tidak ada preview 360° untuk produk ini.</p>
+                        @endif
                     </div>
                 </div>
             </div>
