@@ -58,7 +58,7 @@
 
                     <div class="card_area d-flex align-items-center">
                         <a class="btn btn-success mr-3"
-                            href="https://wa.me/6285158965322?text=Halo%20saya%20ingin%20bertanya%20tentang%20mobil"
+                            href="https://wa.me/6281383435007?text=Halo%20saya%20ingin%20bertanya%20tentang%20mobil"
                             target="_blank">WhatsApp</a>
                         <a class="btn btn-danger" href="#" onclick="add_cicilan()">Cicilan</a>
                     </div>
@@ -234,7 +234,7 @@
     }
 
     function add_cicilan() {
-        if (!@json(auth()->check())) {
+        if (!@json(auth() - > check())) {
             window.location.href = "{{ route('login') }}";
         } else {
             resetForm();

@@ -48,7 +48,11 @@ class VerifikasiStatus extends Controller
                         'status'           => 'pending',
                     ]);
                 }
-            } else if ($verifikasi == 'status_pemesanan' && $request->status == 'Ditolak' && $pemesanan->jenis_pembayaran == 'kredit') {
+            } else if (
+                $verifikasi == 'status_pemesanan' &&
+                in_array($request->status, ['Ditolak', 'Ditarik']) &&
+                $pemesanan->jenis_pembayaran == 'kredit'
+            ) {
                 PembayaranCicilan::where('pemesanan_id', $pemesanan->id)->delete();
             }
         }
