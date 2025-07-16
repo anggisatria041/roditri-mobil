@@ -234,7 +234,7 @@
     }
 
     function add_cicilan() {
-        if (!@json(auth() - > check())) {
+        if (!@json(auth()->check())) {
             window.location.href = "{{ route('login') }}";
         } else {
             resetForm();
