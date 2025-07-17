@@ -62,14 +62,14 @@
                         <form class="form w-100" novalidate="novalidate" action="{{ route('postlogin') }}"
                             method="POST">
                             @csrf
-                            <div class="row g-3 mb-9">
+                            <!-- <div class="row g-3 mb-9">
                                 <div class="col-md-6">
                                     <a href="{{ route('home') }}" class="btn text-white"
                                         style="background-color: #D84040">
                                         <span class="indicator-label">Back Home</span>
                                     </a>
                                 </div>
-                            </div>
+                            </div> -->
                             @csrf
                             <div class="text-center mb-11">
                                 <h1 class="text-gray-900 fw-bolder mb-3">Masuk</h1>
@@ -100,9 +100,15 @@
                                 <button type="submit" id="kt_sign_in_submit" class="btn text-white" style="background-color: #D84040">
                                     <span class="indicator-label">Masuk</span>
                             </div>
-                            <div class="text-gray-500 text-center fw-semibold fs-6">Belum punya akun?
-                                <a href="{{ url('register') }}" style="color:#D84040">Daftar</a>
+                            <div class="d-flex justify-content-between text-gray-500 fw-semibold fs-6">
+                                <span>Kembali ke
+                                    <a href="{{ route('home') }}" style="color:#D84040">Home</a>
+                                </span>
+                                <span>Belum punya akun?
+                                    <a href="{{ url('register') }}" style="color:#D84040">Daftar</a>
+                                </span>
                             </div>
+
                         </form>
                     </div>
                 </div>

@@ -55,7 +55,7 @@ class ProdukController extends Controller
             'masa_berlaku_stnk' => 'required',
             'jarak_tempuh' => 'required',
             'deskripsi' => 'required',
-            'tour_id' => 'required',
+            'tour_id' => 'nullable',
             'foto1' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'foto2' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'foto3' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
@@ -184,7 +184,7 @@ class ProdukController extends Controller
             'masa_berlaku_stnk' => 'required',
             'jarak_tempuh' => 'required',
             'deskripsi' => 'required',
-            'tour_id' => 'required',
+            'tour_id' => 'nullable',
         ]);
 
         if ($validator->fails()) {
