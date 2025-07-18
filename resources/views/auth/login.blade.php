@@ -118,7 +118,7 @@
                 <div class="d-flex flex-column flex-center py-7 py-lg-15 px-5 px-md-15 w-100">
                     <img class="d-none d-lg-block mx-auto w-265px w-md-40 w-xl-400px mb-8 mb-lg-20 animate__animated animate__fadeInRight"
                         style="--animate-duration: 1.5s; --animate-delay: 0.5s;"
-                        src="{{ asset('assets/media/misc/car.png') }}" alt="" />
+                        src="{{ asset('assets/media/misc/logo-roditri.png') }}" alt="" />
                     <h1 class="d-none d-lg-block text-white fs-2qx fw-bolder text-center mb-7">Cepat, Nyaman, dan
                         Terpercaya</h1>
                     <div class="d-none d-lg-block text-white fs-base text-center">Temukan kemudahan perjalanan Anda
