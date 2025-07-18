@@ -56,10 +56,11 @@ class ProdukController extends Controller
             'jarak_tempuh' => 'required',
             'deskripsi' => 'required',
             'tour_id' => 'nullable',
-            'foto1' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'foto2' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'foto3' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'foto4' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'foto1' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
+            'foto2' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
+            'foto3' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
+            'foto4' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
+
         ]);
 
         if ($validator->fails()) {
