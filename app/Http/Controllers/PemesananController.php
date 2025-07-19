@@ -58,6 +58,13 @@ class PemesananController extends Controller
             $slip_gaji = null;
         }
 
+        if ($request->hasFile('ktp')) {
+            $ktpPath = $request->file('ktp')->store('file_pendukung', 'public');
+            $ktp = $ktpPath;
+        } else {
+            $ktp = null;
+        }
+
         $data = Pemesanan::create([
             'user_id' => $request->user_id,
             'produk_id' => $request->produk_id,
@@ -68,6 +75,7 @@ class PemesananController extends Controller
             'tanggal' => now(),
             'bukti_pembayaran' => $pembayaran,
             'slip_gaji' => $slip_gaji,
+            'ktp' => $ktp,
         ]);
 
 

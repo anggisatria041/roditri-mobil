@@ -220,7 +220,12 @@
 </div>
 @if (
 $data->jenis_pembayaran == 'kredit' &&
-($data->status_pemesanan == 'Diterima' || $data->status_pemesanan == 'Selesai'))
+(
+$data->status_pemesanan == 'Diterima' ||
+$data->status_pemesanan == 'Selesai' ||
+$data->status_pemesanan == 'Ditarik'
+)
+)
 <div class="card mb-5 mb-xl-8">
     <div class="card-header border-0 pt-5">
         <h3 class="card-title align-items-start flex-column">
