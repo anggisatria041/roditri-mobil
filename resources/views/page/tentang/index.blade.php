@@ -20,7 +20,7 @@
         <div class="row justify-content-center mb-5">
             <div class="col-lg-8">
                 <div class="feature-img text-center">
-                    <img class="img-fluid rounded" src="{{ asset('themes/img/blog/car-11.jpg') }}" alt="Gambar Mobil">
+                <img class="img-fluid rounded" src="{{ asset('themes/img/blog/lokasi.jpg') }}" alt="Gambar Mobil">
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
             <div class="col-lg-4 col-md-5">
                 <div class="blog_right_sidebar">
                     <aside class="single_sidebar_widget author_widget">
-                        <img class="author_img rounded-circle" src="{{ asset('themes/img/blog/author.png') }}" alt="Author">
+                        <img class="author_img rounded-circle" src="{{ asset('themes/img/blog/owner.png') }}" alt="Author">
                         <h4>Tri Brothers</h4>
                         <p>Owner of Roditri Mobil</p>
                         <div class="social_icon mb-2"></div>
