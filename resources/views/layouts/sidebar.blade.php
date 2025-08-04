@@ -25,70 +25,80 @@
                 </div>
             </div>
             @if (Auth::user()->role == 'owner')
-                <div class="menu-item">
-                    <a class="menu-link {{ request()->routeIs('laporan_penjualan.*') ? 'active' : '' }}"
-                        href="{{ route('laporan_penjualan.index') }}">
-                        <span class="menu-icon">
-                            <i class="ki-outline ki-abstract-41 fs-2"></i>
-                        </span>
-                        <span class="menu-title">Laporan Penjualan</span>
-                    </a>
-                </div>
+            <div class="menu-item">
+                <a class="menu-link {{ request()->routeIs('laporan_penjualan.*') ? 'active' : '' }}"
+                    href="{{ route('laporan_penjualan.index') }}">
+                    <span class="menu-icon">
+                        <i class="ki-outline ki-abstract-41 fs-2"></i>
+                    </span>
+                    <span class="menu-title">Laporan Penjualan</span>
+                </a>
+            </div>
             @endif
             @if (Auth::user()->role == 'admin')
-                <div class="menu-item">
-                    <a class="menu-link {{ request()->routeIs('produk.*') ? 'active' : '' }}"
-                        href="{{ route('produk.index') }}">
-                        <span class="menu-icon">
-                            <i class="ki-outline ki-abstract-41 fs-2"></i>
-                        </span>
-                        <span class="menu-title">Produk</span>
-                    </a>
-                </div>
-                <div class="menu-item">
-                    <a class="menu-link {{ request()->routeIs('fitur.index') ? 'active' : '' }}"
-                        href="{{ route('fitur.index') }}">
-                        <span class="menu-icon">
-                            <i class="ki-outline ki-abstract-41 fs-2"></i>
-                        </span>
-                        <span class="menu-title">Fitur</span>
-                    </a>
-                </div>
-                <div class="menu-item">
-                    <a class="menu-link {{ request()->routeIs('pemesanan.*') ? 'active' : '' }}"
-                        href="{{ route('pemesanan.index') }}">
-                        <span class="menu-icon">
-                            <i class="ki-outline ki-abstract-41 fs-2"></i>
-                        </span>
-                        <span class="menu-title">Pemesanan</span>
-                    </a>
-                </div>
-                <div class="menu-item pt-5">
-                    <div class="menu-content">
-                        <span class="menu-heading fw-bold text-uppercase fs-7">Pengaturan</span>
-                    </div>
-                </div>
-                <div data-kt-menu-trigger="click"
-                    class="menu-item menu-accordion {{ request()->routeIs('user.index') ? 'show' : '' }}">
-                    <span class="menu-link">
-                        <span class="menu-icon">
-                            <i class="ki-outline ki-address-book fs-2"></i>
-                        </span>
-                        <span class="menu-title">Pengaturan User</span>
-                        <span class="menu-arrow"></span>
+            <div class="menu-item">
+                <a class="menu-link {{ request()->routeIs('produk.*') ? 'active' : '' }}"
+                    href="{{ route('produk.index') }}">
+                    <span class="menu-icon">
+                        <i class="ki-outline ki-abstract-41 fs-2"></i>
                     </span>
-                    <div class="menu-sub menu-sub-accordion">
-                        <div class="menu-item">
-                            <a class="menu-link {{ request()->routeIs('user.index') ? 'active' : '' }}"
-                                href="{{ route('user.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">User</span>
-                            </a>
-                        </div>
+                    <span class="menu-title">Produk</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a class="menu-link {{ request()->routeIs('fitur.index') ? 'active' : '' }}"
+                    href="{{ route('fitur.index') }}">
+                    <span class="menu-icon">
+                        <i class="ki-outline ki-abstract-41 fs-2"></i>
+                    </span>
+                    <span class="menu-title">Fitur</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a class="menu-link {{ request()->routeIs('pemesanan.*') ? 'active' : '' }}"
+                    href="{{ route('pemesanan.index') }}">
+                    <span class="menu-icon">
+                        <i class="ki-outline ki-abstract-41 fs-2"></i>
+                    </span>
+                    <span class="menu-title">Pemesanan</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a class="menu-link {{ request()->routeIs('pemesanan.*') ? 'active' : '' }}"
+                    href="{{ route('pemesanan.index') }}">
+                    <span class="menu-icon">
+                        <i class="ki-outline ki-abstract-41 fs-2"></i>
+                    </span>
+                    <span class="menu-title">Tunggakan Kredit</span>
+                </a>
+            </div>
+
+            <div class="menu-item pt-5">
+                <div class="menu-content">
+                    <span class="menu-heading fw-bold text-uppercase fs-7">Pengaturan</span>
+                </div>
+            </div>
+            <div data-kt-menu-trigger="click"
+                class="menu-item menu-accordion {{ request()->routeIs('user.index') ? 'show' : '' }}">
+                <span class="menu-link">
+                    <span class="menu-icon">
+                        <i class="ki-outline ki-address-book fs-2"></i>
+                    </span>
+                    <span class="menu-title">Pengaturan User</span>
+                    <span class="menu-arrow"></span>
+                </span>
+                <div class="menu-sub menu-sub-accordion">
+                    <div class="menu-item">
+                        <a class="menu-link {{ request()->routeIs('user.index') ? 'active' : '' }}"
+                            href="{{ route('user.index') }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">User</span>
+                        </a>
                     </div>
                 </div>
+            </div>
             @endif
         </div>
     </div>
