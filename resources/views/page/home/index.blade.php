@@ -8,7 +8,7 @@
                     <div class="col-lg-5 col-md-6">
                         <div class="banner-content">
                             <h1>Selamat Datang di <br>Roditri Mobil!</h1>
-                            <p>Roditri Mobil, Tempatnya Para Pemburu Roda!</p>
+                            <h4>Roditri Mobil, Tempatnya Para Pemburu Roda!</h4>
                         </div>
                     </div>
                     <div class="col-lg-7">
