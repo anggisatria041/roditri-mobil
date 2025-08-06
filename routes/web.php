@@ -10,6 +10,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\VerifikasiStatus;
 use App\Http\Controllers\LaporanPenjualanController;
+use App\Http\Controllers\TunggakanController;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 
@@ -83,6 +84,12 @@ Route::middleware(['custom-auth'])->group(
             Route::post('/bukti_pembayaran', [PemesananController::class, 'bukti_pembayaran'])->name('pemesanan.bukti_pembayaran');
             Route::post('/pembayaran_cicilan', [PemesananController::class, 'pembayaran_cicilan'])->name('pemesanan.pembayaran_cicilan');
             Route::get('/kwitansi/{id}', [PemesananController::class, 'kwitansi'])->name('pemesanan.kwitansi');
+        });
+
+        // Laporan Penjualan
+        Route::prefix('tunggakan')->group(function () {
+            Route::get('/', [TunggakanController::class, 'index'])->name('tunggakan.index');
+            Route::post('/data', [TunggakanController::class, 'data'])->name('tunggakan-list');
         });
 
         // Laporan Penjualan

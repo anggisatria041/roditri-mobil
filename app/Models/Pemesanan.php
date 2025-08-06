@@ -12,11 +12,11 @@ class Pemesanan extends Model
 
     public function produk()
     {
-        return $this->belongsTo(Produk::class, 'produk_id', 'id');
+        return $this->belongsTo(Produk::class, 'produk_id', 'id')->withDefault();
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id')->withDefault();
     }
 }
