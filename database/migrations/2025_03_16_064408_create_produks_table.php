@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('tahun');
             $table->integer('harga');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->string('warna');
             $table->integer('kapasitas_mesin');
             $table->string('bahan_bakar');
