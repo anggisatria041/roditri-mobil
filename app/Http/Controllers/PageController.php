@@ -9,6 +9,7 @@ use App\Models\Fitur;
 use App\Models\Cicilan;
 use App\Models\PembayaranCicilan;
 use App\Models\Pemesanan;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Crypt;
 
 class PageController extends Controller
@@ -56,10 +57,18 @@ class PageController extends Controller
     {
         if (auth()->user() != null) {
             $pemesanan = Pemesanan::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
+            $jatuhTempo = PembayaranCicilan::where('status', 'pending')
+                ->whereHas('pemesanan', function ($query) {
+                    $query->where('user_id', auth()->id());
+                })
+                ->whereDate('tanggal_jatuh_tempo', '<=', Carbon::today())
+                ->with('pemesanan') // supaya relasi langsung ikut di-load
+                ->first();
         } else {
             $pemesanan = '';
+            $jatuhTempo = '';
         }
-        return view('page.pesanan.index', compact('pemesanan'));
+        return view('page.pesanan.index', compact('pemesanan','jatuhTempo'));
     }
 
     public function detail_cicilan($id)
