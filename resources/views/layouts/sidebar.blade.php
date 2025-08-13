@@ -1,3 +1,8 @@
+@php
+    $totalTunggakan = \App\Models\PembayaranCicilan::where('status', 'pending')
+        ->whereDate('tanggal_jatuh_tempo', '<=', \Carbon\Carbon::today())
+        ->count();
+@endphp
 <div class="aside-menu flex-column-fluid">
     <div class="hover-scroll-overlay-y" id="kt_aside_menu_wrapper" data-kt-scroll="true"
         data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto"
@@ -61,6 +66,20 @@
                             <i class="ki-outline ki-abstract-41 fs-2"></i>
                         </span>
                         <span class="menu-title">Pemesanan</span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link {{ request()->routeIs('tunggakan.*') ? 'active' : '' }}"
+                        href="{{ route('tunggakan.index') }}">
+                        <span class="menu-icon">
+                            <i class="ki-outline ki-abstract-41 fs-2"></i>
+                        </span>
+                        <span class="menu-title">
+                            Tunggakan Kredit
+                            @if ($totalTunggakan > 0)
+                                <span class="badge badge-danger ms-2">{{ $totalTunggakan }}</span>
+                            @endif
+                        </span>
                     </a>
                 </div>
                 <div class="menu-item pt-5">

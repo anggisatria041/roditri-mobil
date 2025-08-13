@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('fitur', function (Blueprint $table) {
             $table->id();
-            $table->string('fitur');
+            $table->text('fitur');
             $table->timestamps();
         });
     }
