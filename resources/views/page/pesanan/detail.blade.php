@@ -61,7 +61,9 @@
                                         <h5>{{ $item->tanggal_bayar ?? '-' }}</h5>
                                     </td>
                                     <td>
-                                        @if ($item->status == 'pending')
+                                        @if (\Carbon\Carbon::parse($item->tanggal_jatuh_tempo)->lte(\Carbon\Carbon::today()) && $item->status == 'pending')
+                                            <h5 class="text-danger">Jatuh Tempo</h5>
+                                        @elseif ($item->status == 'pending')
                                             <h5 class="text-warning">Pending</h5>
                                         @elseif($item->status == 'Lunas')
                                             <h5 class="text-success">{{ $item->status }}</h5>

@@ -38,6 +38,7 @@
                                 <th>Cicilan</th>
                                 <th>Jatuh Tempo</th>
                                 <th>Status</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -56,14 +57,18 @@
                                         <td>Cicilan {{ $item->cicilan }}</td>
                                         <td>{{ $item->tanggal_jatuh_tempo }}</td>
                                         <td>
-                                        @if($item->pemesanan->status_pemesanan == 'Ditarik')
-                                            <span class="badge badge-light-danger">Ditarik</span>
-                                        @else
-                                            <span class="badge badge-light-danger">Jatuh Tempo</span>
-                                @endif
-                                </td>
-                                </tr>
-                            @endforeach
+                                            @if ($item->pemesanan->status_pemesanan == 'Ditarik')
+                                                <span class="badge badge-light-danger">Ditarik</span>
+                                            @else
+                                                <span class="badge badge-light-danger">Jatuh Tempo</span>
+                                            @endif
+                                        </td>
+                                        <td><a href="{{ url('pemesanan/show/' . Crypt::encryptString($item->pemesanan->id)) }}"
+                                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                <i class="ki-outline ki-information fs-2 text-primary"></i>
+                                            </a></td>
+                                    </tr>
+                                @endforeach
                             @endif
                         </tbody>
                     </table>
